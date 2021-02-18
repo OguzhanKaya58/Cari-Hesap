@@ -1,0 +1,937 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="Cari Hesap" Logo="CariHesapLogo">
+  <BOModel>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Account">
+      <OwnMembers>
+        <Member Name="Balance" DisplayFormat="C2" EditMask="C2" />
+        <Member Name="Code" AllowEdit="False" />
+        <Member Name="Debt" DisplayFormat="C2" EditMask="C2" />
+        <Member Name="Receivable" DisplayFormat="C2" EditMask="C2" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.AccountCollection">
+      <OwnMembers>
+        <Member Name="AccountBalance" DisplayFormat="C2" EditMask="C2" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.AccountPayment">
+      <OwnMembers>
+        <Member Name="AccountBalance" DisplayFormat="C2" EditMask="C2" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.BankAccounts">
+      <OwnMembers>
+        <Member Name="BankBranchID" DataSourceCriteriaProperty="" DataSourceProperty="BankID.BankBranches" />
+        <Member Name="Code" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.BankBranches">
+      <OwnMembers>
+        <Member Name="Code" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Banks">
+      <OwnMembers>
+        <Member Name="Code" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.BankTransactions">
+      <OwnMembers>
+        <Member Name="AccountsID" DataSourceCriteria="" DataSourceProperty="BankID.BankAccounts" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Case">
+      <OwnMembers>
+        <Member Name="Balance" DisplayFormat="C3" EditMask="C3" />
+        <Member Name="Code" AllowEdit="False" />
+        <Member Name="Collection" DisplayFormat="C3" EditMask="C3" />
+        <Member Name="Payment" DisplayFormat="C3" EditMask="C3" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.ExpenseGroup">
+      <OwnMembers>
+        <Member Name="Code" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Expenses">
+      <OwnMembers>
+        <Member Name="Code" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Receipts">
+      <OwnMembers>
+        <Member Name="AccountID" DataSourceCriteria="[Status] = True" />
+        <Member Name="Code" AllowEdit="False" />
+        <Member Name="Date" DisplayFormat="dd.MM.yyyy HH:mm:ss" EditMask="dd.MM.yyyy HH:mm:ss" />
+        <Member Name="DiscountTotal" DisplayFormat="C2" EditMask="C2" />
+        <Member Name="OverallTotal" DisplayFormat="C2" EditMask="C2" />
+        <Member Name="SubTotal" DisplayFormat="C2" EditMask="C2" />
+        <Member Name="TaxTotal" DisplayFormat="C2" EditMask="C2" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Stock">
+      <OwnMembers>
+        <Member Name="Code" AllowEdit="False" />
+        <Member Name="PurchasePrice" DisplayFormat="C3" EditMask="C3" />
+        <Member Name="SalePrice" DisplayFormat="C3" EditMask="C3" />
+        <Member Name="Tax" DisplayFormat="N2" EditMask="N2" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.StockMovements" DefaultDetailView="StockMovements_DetailView">
+      <OwnMembers>
+        <Member Name="Amount" DisplayFormat="N3" EditMask="N3" />
+        <Member Name="Date" DisplayFormat="dd.MM.yyyy HH:mm:ss" EditMask="dd.MM.yyyy HH:mm:ss" />
+        <Member Name="DiscountAmount" DisplayFormat="C3" EditMask="C3" />
+        <Member Name="DiscountRate" DisplayFormat="N2" EditMask="N2" />
+        <Member Name="NetTotal" DisplayFormat="C3" EditMask="C3" />
+        <Member Name="OverallTotal" DisplayFormat="C3" EditMask="C3" />
+        <Member Name="StockID" DataSourceCriteria="[Status] = True" />
+        <Member Name="TaxAmount" DisplayFormat="C3" EditMask="C3" />
+        <Member Name="TaxRate" DisplayFormat="N2" EditMask="N2" />
+        <Member Name="Total" DisplayFormat="C3" EditMask="C3" />
+        <Member Name="UnitPrice" DisplayFormat="C3" EditMask="C3" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Unit">
+      <OwnMembers>
+        <Member Name="Code" AllowEdit="False" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="Cariler" Caption="Cariler" Index="0" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Cariler" ViewId="Account_ListView" ImageName="FilterEditor_User" Index="0" Caption="Cariler" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Faturalar" ImageName="Action_Printing_Print" Index="1" Caption="Faturalar" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Alış Faturası" Caption="Alış Faturası" ViewId="PurchaseInvoice_ListView" ImageName="Action_Navigation_Next_Object" IsNewNode="True" />
+          <Item Id="Satış Faturası" ViewId="SaleInvoice_ListView" ImageName="Action_Navigation_Previous_Object" Caption="Satış Faturası" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Stoklar" ImageName="ModelEditor_Application" Index="2" Caption="Stoklar" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Stok" ViewId="Stock_ListView" ImageName="Action_PivotChart_Data_Bind" Caption="Stok" IsNewNode="True" />
+          <Item Id="Stok Hareketleri" ViewId="StockMovements_ListView" ImageName="ModelEditor_Action_Modules" Caption="Stok Hareketleri" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Tahsilatlar" Caption="Tahsilatlar" Index="3" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Banka Tahsilat" ViewId="BankCollection_ListView" ObjectKey="" Caption="Banka Tahsilat" IsNewNode="True" />
+          <Item Id="Cari Tahsilat" ViewId="AccountCollection_ListView" Caption="Cari Tahsilat" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Ödemeler" Index="4" Caption="Ödemeler" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Banka Ödeme" ViewId="BankPayment_ListView" ObjectKey="" Caption="Banka Ödeme" IsNewNode="True" />
+          <Item Id="Cari Ödeme" ViewId="AccountPayment_ListView" Caption="Cari Ödeme" IsNewNode="True" />
+          <Item Id="Kasa Masraf Ödemeler" ViewId="CaseExpensePayment_ListView" ObjectKey="" Caption="Kasa Masraf Ödemeler" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Masraflar" Index="5" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Masraflar" ViewId="Expenses_ListView" ObjectKey="" Index="0" Caption="Masraflar" IsNewNode="True" />
+          <Item Id="Masraf Grupları" ViewId="ExpenseGroup_ListView" ObjectKey="" Caption="Masraf Grupları" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Kasalar" Caption="Kasalar" Index="6" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Kasa" ViewId="Case_ListView" ImageName="Action_Logoff" Caption="Kasa" Index="1" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Bankalar" Index="7" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Banka Hesapları" ViewId="BankAccounts_ListView" ObjectKey="" Caption="Banka Hesapları" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Tanımlar" ImageName="Action_Chart_Options" Visible="True" Caption="Tanımlar" Index="8" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Bankalar" ViewId="Banks_ListView" ObjectKey="" Caption="Bankalar" Index="0" IsNewNode="True" />
+          <Item Id="Banka Şubeleri" ViewId="BankBranches_ListView" ObjectKey="" Caption="Banka Şubeleri" Index="1" IsNewNode="True" />
+          <Item Id="Birimler" ViewId="Unit_ListView" ImageName="Action_Dashboard_ShowDesigner" Caption="Birimler" Index="2" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Özellikler" Index="9" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Ajanda" ViewId="Event_ListView" ObjectKey="" Caption="Ajanda" IsNewNode="True" />
+          <Item Id="Rapor" Visible="False" Caption="Rapor" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="ReportsV2" ViewId="ReportDataV2_ListView" ObjectKey="" Caption="Reports" IsNewNode="True" />
+            </Items>
+          </Item>
+        </Items>
+      </Item>
+      <Item Id="Default" Visible="False" Index="10">
+        <Items>
+          <Item Id="BankAccounts_ListView" Removed="True" />
+          <Item Id="BankBranches_ListView" Removed="True" />
+          <Item Id="BankCollection_ListView" Removed="True" />
+          <Item Id="BankPayment_ListView" Removed="True" />
+          <Item Id="Banks_ListView" Removed="True" />
+          <Item Id="CaseExpensePayment_ListView" Removed="True" />
+          <Item Id="ExpenseGroup_ListView" Removed="True" />
+          <Item Id="Expenses_ListView" Removed="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Visible="False" />
+    </Items>
+  </NavigationItems>
+  <Options>
+    <LayoutManagerOptions RequiredFieldMark="*" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="20.1.8.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="20.1.8.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="20.1.8.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="Account_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="36.348408710217754">
+            <LayoutGroup Id="Account" RelativeSize="100" Direction="Vertical">
+              <LayoutGroup Id="Account_col1" RelativeSize="100" Caption="Account_col1">
+                <LayoutGroup Id="Autoc39b829d-4930-4175-8924-487075c11e30" ShowCaption="False" Caption="Autoc39b829d-4930-4175-8924-487075c11e30(5)" Direction="Horizontal" Index="0" RelativeSize="19.662921348314608" IsNewNode="True">
+                  <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="49.946409431939976" IsNewNode="True" />
+                  <LayoutItem Id="Status" ViewItem="Status" Index="1" RelativeSize="50.053590568060024" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Autod5e9bc35-7533-44a1-bc87-a728f257acc2" ShowCaption="False" Caption="Autod5e9bc35-7533-44a1-bc87-a728f257acc2(8)" Index="1" RelativeSize="48.876404494382022" IsNewNode="True">
+                  <LayoutItem Id="Definition" ViewItem="Definition" Index="0" RelativeSize="31.03448275862069" IsNewNode="True" />
+                  <LayoutGroup Id="Autoc3725e73-68eb-43ca-9d7c-05eb94ec43d4" ShowCaption="False" Caption="Autoc3725e73-68eb-43ca-9d7c-05eb94ec43d4(10)" Direction="Horizontal" Index="1" RelativeSize="68.965517241379317" IsNewNode="True">
+                    <LayoutGroup Id="Autoca48bf10-9be5-4ece-bc04-1588542fd312" ShowCaption="False" Caption="Autoca48bf10-9be5-4ece-bc04-1588542fd312(11)" Index="0" RelativeSize="49.946409431939976" IsNewNode="True">
+                      <LayoutItem Id="Email" ViewItem="Email" Index="0" RelativeSize="50" IsNewNode="True" />
+                      <LayoutItem Id="City" ViewItem="City" Index="1" RelativeSize="50" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Autoaa1732e7-5851-4a73-abed-9eb8f21ff344" ShowCaption="False" Caption="Autoaa1732e7-5851-4a73-abed-9eb8f21ff344(14)" Index="1" RelativeSize="50.053590568060024" IsNewNode="True">
+                      <LayoutItem Id="Country" ViewItem="Country" Index="0" RelativeSize="50" IsNewNode="True" />
+                      <LayoutItem Id="Phone" ViewItem="Phone" Index="1" RelativeSize="50" IsNewNode="True" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="Address" ViewItem="Address" Index="2" RelativeSize="13.48314606741573" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="City" RelativeSize="85.611510791366911" Index="2" Removed="True" />
+                <LayoutGroup Id="Auto943f8409-22b1-4fb7-8e07-514ed69310a3" ShowCaption="False" Caption="" Direction="Horizontal" Index="3" RelativeSize="17.977528089887642" IsNewNode="True">
+                  <LayoutItem Id="DiscountRate" ViewItem="DiscountRate" Index="0" RelativeSize="49.946409431939976" IsNewNode="True" />
+                  <LayoutItem Id="Discount" ViewItem="Discount" Index="1" RelativeSize="50.053590568060024" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="Code" Removed="True" />
+                <LayoutItem Id="Country" Removed="True" />
+                <LayoutItem Id="Definition" RelativeSize="4.3165467625899279" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Account_col2" RelativeSize="50" Caption="Account_col2" Removed="True">
+                <LayoutItem Id="Email" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Phone" RelativeSize="5.7553956834532372" Index="0" Removed="True" />
+                <LayoutItem Id="Country" RelativeSize="5.7553956834532372" Removed="True" />
+                <LayoutItem Id="Status" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Account_ListView">
+      <Filters CurrentFilterId="active">
+        <Filter Id="All" Caption="All" Description="All" Criteria="[Status] = True Or [Status] = False" ImageName="State_Validation_Valid" Index="0" IsNewNode="True" />
+        <Filter Id="active" Caption="Active" Criteria="[Status] = True" ImageName="Action_Validation_Validate" Description="Active" IsNewNode="True" />
+        <Filter Id="Passive" Caption="Passive" Description="Passive" ImageName="Action_Deny" Criteria="[Status] = False" IsNewNode="True" />
+      </Filters>
+    </ListView>
+    <ListView Id="Account_MoneyMovement_ListView">
+      <Columns>
+        <ColumnInfo Id="CaseID" Index="-1" />
+        <ColumnInfo Id="Code" Index="-1" Width="45" />
+        <ColumnInfo Id="Date" Index="0" Width="116" />
+        <ColumnInfo Id="Definition" Index="1" />
+        <ColumnInfo Id="CaseMovementType" Index="2" />
+        <ColumnInfo Id="Amount" Index="3" />
+      </Columns>
+    </ListView>
+    <ListView Id="Account_PurchaseSaleTransaction_ListView">
+      <Columns>
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Width="58" Index="1" />
+        <ColumnInfo Id="Type" Index="2" />
+        <ColumnInfo Id="SubTotal" Width="69" Index="3" />
+        <ColumnInfo Id="DiscountTotal" Width="77" Index="4" />
+        <ColumnInfo Id="TaxTotal" Width="77" Index="5" />
+        <ColumnInfo Id="OverallTotal" Width="74" Index="6" />
+        <ColumnInfo Id="Definition" Width="88" Index="7" />
+      </Columns>
+    </ListView>
+    <DetailView Id="AccountCollection_DetailView">
+      <Items>
+        <PropertyEditor Id="Amount" DisplayFormat="C2" EditMask="C2" />
+        <PropertyEditor Id="Definition" RowCount="1" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100" />
+          <LayoutGroup Id="SizeableEditors" RelativeSize="78.726968174204359" Caption="Definition" Removed="True">
+            <LayoutItem Id="Definition" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="AccountCollection_ListView">
+      <Columns>
+        <ColumnInfo Id="AccountBalance" Width="108" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+        <ColumnInfo Id="CaseID" Index="2" />
+        <ColumnInfo Id="AccountID" Index="3" />
+        <ColumnInfo Id="CaseMovementType" Index="4" />
+        <ColumnInfo Id="Amount" Index="5" />
+        <ColumnInfo Id="Definition" Index="6" />
+      </Columns>
+    </ListView>
+    <DetailView Id="AccountPayment_DetailView">
+      <Items>
+        <PropertyEditor Id="Amount" DisplayFormat="C2" EditMask="C2" />
+        <PropertyEditor Id="CaseID" DataSourcePropertyIsNullMode="SelectAll" DataSourceCriteria="[Status] = True Or [Status] = False" />
+        <PropertyEditor Id="Definition" RowCount="1" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100" />
+          <LayoutGroup Id="SizeableEditors" RelativeSize="78.726968174204359" Caption="Definition" Removed="True">
+            <LayoutItem Id="Definition" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="AccountPayment_ListView">
+      <Columns>
+        <ColumnInfo Id="AccountBalance" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+        <ColumnInfo Id="CaseID" Index="2" />
+        <ColumnInfo Id="AccountID" Index="3" />
+        <ColumnInfo Id="CaseMovementType" Index="4" />
+        <ColumnInfo Id="Amount" Index="5" />
+        <ColumnInfo Id="Definition" Index="6" />
+      </Columns>
+    </ListView>
+    <DetailView Id="BankAccounts_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="BankAccounts" RelativeSize="100">
+              <LayoutGroup Id="BankAccounts_col1" RelativeSize="49.862637362637365">
+                <LayoutItem Id="Code" RelativeSize="4.5133991537376588" />
+                <LayoutItem Id="Account" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="InternationalBankAccountNumber" RelativeSize="92.1015514809591" />
+              </LayoutGroup>
+              <LayoutGroup Id="BankAccounts_col2" RelativeSize="50.137362637362635">
+                <LayoutItem Id="BankID" RelativeSize="4.5133991537376588" />
+                <LayoutItem Id="BankBranchID" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="Explanation" RelativeSize="92.1015514809591" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="83.86666666666666" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="BankBranches_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="14.666666666666666">
+            <LayoutGroup Id="BankBranches" RelativeSize="100">
+              <LayoutItem Id="Code" RelativeSize="29.09090909090909" />
+              <LayoutItem Id="Definition" RelativeSize="21.818181818181817" />
+              <LayoutItem Id="BankID" RelativeSize="21.818181818181817" />
+              <LayoutItem Id="Explanation" RelativeSize="27.272727272727273" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="70.666666666666671" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="BankAccounts_Group" Direction="Vertical" RelativeSize="85.333333333333329">
+            <LayoutItem Id="BankAccounts" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="BankCollection_DetailView">
+      <Items>
+        <PropertyEditor Id="Amount" DisplayFormat="C2" EditMask="C2" />
+        <PropertyEditor Id="Code" AllowEdit="False" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="20.770519262981576">
+            <LayoutGroup Id="BankTransactions" Index="0" RelativeSize="24.675324675324674" Caption="BankTransactions" Removed="True">
+              <LayoutItem Id="AccountsID" RelativeSize="100" Index="0" Removed="True" />
+              <LayoutItem Id="BankID" RelativeSize="51.612903225806448" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="CaseTransactions" Index="0" RelativeSize="100" Caption="Banka Tahsilat">
+              <LayoutGroup Id="CaseTransactions_col1" RelativeSize="49.794238683127574">
+                <LayoutItem Id="Code" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="BankID" ViewItem="BankID" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="AccountID" Index="2" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="CaseID" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="CaseTransactions_col2" RelativeSize="50.205761316872426">
+                <LayoutItem Id="AccountsID" ViewItem="AccountsID" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="Amount" RelativeSize="27.272727272727273" Index="1" />
+                <LayoutItem Id="Date" RelativeSize="36.363636363636367" Index="2" />
+                <LayoutItem Id="CaseMovementType" RelativeSize="36.363636363636367" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="79.22948073701842">
+            <LayoutItem Id="Definition" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="BankCollection_ListView">
+      <Columns>
+        <ColumnInfo Id="CaseID" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+        <ColumnInfo Id="BankID" Index="2" />
+        <ColumnInfo Id="AccountsID" Index="3" />
+        <ColumnInfo Id="AccountID" Index="4" />
+        <ColumnInfo Id="Amount" Index="5" />
+        <ColumnInfo Id="Definition" Index="6" />
+      </Columns>
+    </ListView>
+    <DetailView Id="BankPayment_DetailView">
+      <Items>
+        <PropertyEditor Id="Amount" DisplayFormat="C2" EditMask="C2" />
+        <PropertyEditor Id="Code" AllowEdit="False" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="20.770519262981576">
+            <LayoutGroup Id="BankTransactions" Index="0" RelativeSize="24.675324675324674" Caption="BankTransactions" Removed="True">
+              <LayoutItem Id="AccountsID" RelativeSize="100" Index="0" Removed="True" />
+              <LayoutItem Id="BankID" RelativeSize="51.612903225806448" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="CaseTransactions" Index="0" RelativeSize="100" Caption="Banka Ödeme">
+              <LayoutGroup Id="CaseTransactions_col1" RelativeSize="49.93141289437586">
+                <LayoutItem Id="Code" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="BankID" ViewItem="BankID" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="AccountID" Index="2" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="CaseID" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="CaseTransactions_col2" RelativeSize="50.06858710562414">
+                <LayoutItem Id="AccountsID" ViewItem="AccountsID" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="Amount" RelativeSize="27.272727272727273" Index="1" />
+                <LayoutItem Id="Date" RelativeSize="36.363636363636367" Index="2" />
+                <LayoutItem Id="CaseMovementType" RelativeSize="36.363636363636367" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="79.22948073701842">
+            <LayoutItem Id="Definition" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="BankPayment_ListView">
+      <Columns>
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+        <ColumnInfo Id="BankID" Index="2" />
+        <ColumnInfo Id="AccountsID" Index="3" />
+        <ColumnInfo Id="AccountID" Index="4" />
+        <ColumnInfo Id="Amount" Index="5" />
+        <ColumnInfo Id="Definition" Index="6" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Banks_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="14.666666666666666">
+            <LayoutGroup Id="Banks" RelativeSize="100">
+              <LayoutItem Id="Code" RelativeSize="29.09090909090909" />
+              <LayoutItem Id="Definition" RelativeSize="21.818181818181817" />
+              <LayoutItem Id="Explanation" RelativeSize="21.818181818181817" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="70.666666666666671" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="BankTransactions_DetailView">
+      <Items>
+        <PropertyEditor Id="Amount" DisplayFormat="C2" EditMask="C2" />
+      </Items>
+    </DetailView>
+    <ListView Id="BankTransactions_ListView">
+      <Columns>
+        <ColumnInfo Id="AccountsID" Index="-1" />
+        <ColumnInfo Id="BankID" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+        <ColumnInfo Id="AccountID" Index="2" />
+        <ColumnInfo Id="CaseMovementType" Index="3" />
+        <ColumnInfo Id="Amount" Index="4" />
+        <ColumnInfo Id="Definition" Index="5" />
+      </Columns>
+    </ListView>
+    <ListView Id="Case_CaseMovement_ListView">
+      <Columns>
+        <ColumnInfo Id="AccountID" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+        <ColumnInfo Id="Definition" Index="2" />
+        <ColumnInfo Id="CaseMovementType" Index="3" />
+        <ColumnInfo Id="Amount" Index="4" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Case_DetailView">
+      <Items>
+        <PropertyEditor Id="Code" PropertyName="Code" IsNewNode="True" Removed="True" />
+        <PropertyEditor Id="Definition" RowCount="3" />
+        <PropertyEditor Id="Explanation" RowCount="1" />
+        <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" Removed="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="21.273031825795645">
+            <LayoutGroup Id="Case" RelativeSize="100" Direction="Horizontal">
+              <LayoutGroup Id="Autof1612b03-c6b6-4a03-b43e-48ff404000ad" ShowCaption="False" Caption="" Index="0" RelativeSize="49.931600547195622" IsNewNode="True">
+                <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="Explanation" ViewItem="Explanation" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="Status" ViewItem="Status" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Autoe4608d20-a3e8-4124-9a1b-0d94523e72e1" ShowCaption="False" Caption="" Index="1" RelativeSize="50.068399452804378" IsNewNode="True">
+                <LayoutItem Id="Collection" ViewItem="Collection" Index="0" RelativeSize="36.363636363636367" IsNewNode="True" />
+                <LayoutItem Id="Payment" ViewItem="Payment" Index="1" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="Balance" ViewItem="Balance" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Case_col1" Index="1" RelativeSize="16.963064295485637" Caption="Case_col1" Removed="True">
+                <LayoutItem Id="Definition" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Status" RelativeSize="39.772727272727273" Index="2" Removed="True" />
+                <LayoutItem Id="Code" RelativeSize="63.636363636363633" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Case_col2" Index="1" RelativeSize="58.139534883720927" Caption="Case_col2" Removed="True">
+                <LayoutItem Id="Balance" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Payment" RelativeSize="50" Index="0" Removed="True" />
+                <LayoutItem Id="Collection" RelativeSize="36.363636363636367" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="77.066666666666663" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutItem Id="Definition" ViewItem="Definition" Index="1" RelativeSize="4.0201005025125625" IsNewNode="True" />
+          <LayoutGroup Id="CaseMovement_Group" Direction="Vertical" Index="2" RelativeSize="74.7068676716918">
+            <LayoutItem Id="CaseMovement" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="50" Caption="Explanation" Removed="True">
+            <LayoutItem Id="Explanation" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Case_ListView">
+      <Columns>
+        <ColumnInfo Id="Explanation" Index="1" />
+        <ColumnInfo Id="Status" Index="2" />
+        <ColumnInfo Id="Collection" Index="3" />
+        <ColumnInfo Id="Payment" Index="4" />
+        <ColumnInfo Id="Balance" Index="5" />
+        <ColumnInfo Id="Definition" Index="6" />
+      </Columns>
+      <Filters CurrentFilterId="active">
+        <Filter Id="All" Description="All" Criteria="[Status] = True Or [Status] = False" ImageName="State_Validation_Valid" Index="0" IsNewNode="True" />
+        <Filter Id="active" Caption="Active" Criteria="[Status] = True" ImageName="Action_Validation_Validate" Description="Active" IsNewNode="True" />
+        <Filter Id="Passive" Description="Passive" ImageName="Action_Deny" Criteria="[Status] = False" IsNewNode="True" />
+      </Filters>
+    </ListView>
+    <DetailView Id="CaseExpensePayment_DetailView">
+      <Items>
+        <PropertyEditor Id="Amount" DisplayFormat="C2" EditMask="C2" />
+        <PropertyEditor Id="Definition" RowCount="1" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="CaseExpensePayment" RelativeSize="20.320855614973262" Caption="Masraf Türü" Removed="True">
+              <LayoutItem Id="ExpensesID" RelativeSize="100" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="78.726968174204359" Caption="Definition" Removed="True">
+            <LayoutItem Id="Definition" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="CaseExpensePayment_ListView">
+      <Columns>
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+        <ColumnInfo Id="ExpensesID" Index="2" />
+        <ColumnInfo Id="CaseID" Index="3" />
+        <ColumnInfo Id="Amount" Index="4" />
+        <ColumnInfo Id="Definition" Index="5" />
+      </Columns>
+    </ListView>
+    <DetailView Id="CaseTransactions_DetailView">
+      <Items>
+        <PropertyEditor Id="Amount" DisplayFormat="C2" EditMask="C2" />
+      </Items>
+    </DetailView>
+    <DetailView Id="ExpenseGroup_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="8.2666666666666675">
+            <LayoutGroup Id="ExpenseGroup" RelativeSize="100">
+              <LayoutItem Id="Code" RelativeSize="51.612903225806448" />
+              <LayoutItem Id="Definition" RelativeSize="48.387096774193552" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="83.466666666666669" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Expenses_Group" Direction="Vertical" RelativeSize="91.733333333333334">
+            <LayoutItem Id="Expenses" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="ExpenseGroup_ListView">
+      <Columns>
+        <ColumnInfo Id="Code" Index="0" />
+        <ColumnInfo Id="Definition" Index="1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Expenses_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="11.466666666666667">
+            <LayoutGroup Id="Expenses" RelativeSize="100">
+              <LayoutItem Id="Code" RelativeSize="37.2093023255814" />
+              <LayoutItem Id="Definition" RelativeSize="27.906976744186046" />
+              <LayoutItem Id="ExpenseGroupID" RelativeSize="34.883720930232556" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="77.066666666666663" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="ExpenseDetail_Group" Direction="Vertical" RelativeSize="88.533333333333331">
+            <LayoutItem Id="ExpenseDetail" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Expenses_ExpenseDetail_ListView">
+      <Columns>
+        <ColumnInfo Id="AccountID" Index="-1" />
+        <ColumnInfo Id="CaseMovementType" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+        <ColumnInfo Id="CaseID" Index="2" />
+        <ColumnInfo Id="Amount" Index="3" />
+        <ColumnInfo Id="Definition" Index="4" />
+      </Columns>
+    </ListView>
+    <ListView Id="Expenses_ListView">
+      <Columns>
+        <ColumnInfo Id="Code" Index="0" />
+        <ColumnInfo Id="Definition" Index="1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="PurchaseInvoice_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="21.456692913385826">
+            <LayoutGroup Id="Receipts" Index="0" RelativeSize="100" Direction="Vertical" Caption="Fatura Bilgileri">
+              <LayoutGroup Id="Receipts_col1" RelativeSize="100" Caption="Receipts_col1">
+                <LayoutGroup Id="Autoc4300e8d-9df4-4f8b-9c22-cc74c623f0c6" ShowCaption="False" Caption="Autoc4300e8d-9df4-4f8b-9c22-cc74c623f0c6(5)" Direction="Horizontal" Index="0" RelativeSize="54.285714285714285" IsNewNode="True">
+                  <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="46.727748691099478" IsNewNode="True" />
+                  <LayoutItem Id="Date" ViewItem="Date" Index="1" RelativeSize="53.272251308900522" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="AccountID" RelativeSize="45.714285714285715" Index="1" />
+                <LayoutItem Id="Code" RelativeSize="36.363636363636367" Removed="True" />
+                <LayoutItem Id="Date" RelativeSize="27.272727272727273" Removed="True" />
+                <LayoutItem Id="SubTotal" RelativeSize="28.571428571428573" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Receipts_col2" RelativeSize="50" Caption="Receipts_col2" Removed="True">
+                <LayoutItem Id="OverallTotal" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="TaxTotal" RelativeSize="36.363636363636367" Index="0" Removed="True" />
+                <LayoutItem Id="Definition" RelativeSize="28.571428571428573" Removed="True" />
+                <LayoutItem Id="DiscountTotal" RelativeSize="36.363636363636367" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Index="1" RelativeSize="19.88950276243094" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Detail_Group" Direction="Vertical" RelativeSize="78.543307086614178" Caption="Fatura Detay">
+            <LayoutItem Id="Detail" RelativeSize="69.945355191256837" />
+            <LayoutGroup Id="Auto0187f3a7-4705-4b56-9fa5-420a7b5725eb" ShowCaption="False" Caption="Auto0187f3a7-4705-4b56-9fa5-420a7b5725eb(11)" Direction="Horizontal" Index="1" RelativeSize="30.05464480874317" IsNewNode="True">
+              <LayoutItem Id="Definition" ViewItem="Definition" Index="0" RelativeSize="59.424083769633505" IsNewNode="True" />
+              <LayoutGroup Id="Autoff49563b-44b1-473b-aa15-19060927934c" ShowCaption="False" Caption="Autoff49563b-44b1-473b-aa15-19060927934c(13)" Index="1" RelativeSize="40.575916230366495" IsNewNode="True">
+                <LayoutItem Id="SubTotal" ViewItem="SubTotal" Index="0" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="DiscountTotal" ViewItem="DiscountTotal" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="TaxTotal" ViewItem="TaxTotal" Index="2" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="OverallTotal" ViewItem="OverallTotal" Index="3" RelativeSize="29.09090909090909" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="PurchaseInvoice_ListView">
+      <Columns>
+        <ColumnInfo Id="Definition" Index="-1" />
+        <ColumnInfo Id="Type" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+      </Columns>
+    </ListView>
+    <ListView Id="Receipts_Detail_ListView" AllowEdit="True" NewItemRowPosition="Bottom" AllowUnlink="False" AllowLink="False" DetailViewID="" MasterDetailView="StockMovements_DetailView">
+      <Columns>
+        <ColumnInfo Id="Date" Index="-1" />
+        <ColumnInfo Id="StockType" Index="-1" />
+        <ColumnInfo Id="Definition" Index="0" Width="91" />
+        <ColumnInfo Id="StockID" Index="1" SortIndex="0" SortOrder="Descending" Width="56" />
+        <ColumnInfo Id="UnitID" Index="2" Width="68" />
+        <ColumnInfo Id="Amount" Index="3" Width="72" />
+        <ColumnInfo Id="UnitPrice" Index="4" Width="65" />
+        <ColumnInfo Id="Total" Index="5" />
+        <ColumnInfo Id="DiscountRate" Index="6" />
+        <ColumnInfo Id="DiscountAmount" Index="7" />
+        <ColumnInfo Id="NetTotal" Index="8" />
+        <ColumnInfo Id="TaxRate" Index="9" />
+        <ColumnInfo Id="TaxAmount" Index="10" />
+        <ColumnInfo Id="OverallTotal" Index="11" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Receipts_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="18.257956448911223">
+            <LayoutGroup Id="Receipts" RelativeSize="100" Direction="Vertical" Caption="Fatura Bilgileri">
+              <LayoutGroup Id="Receipts_col1" RelativeSize="100" Caption="Receipts_col1">
+                <LayoutGroup Id="Autoe49c3489-cf48-4db3-a85f-ef4d6b66f540" ShowCaption="False" Caption="Autoe49c3489-cf48-4db3-a85f-ef4d6b66f540(5)" Direction="Horizontal" Index="0" RelativeSize="54.285714285714285" IsNewNode="True">
+                  <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="Date" ViewItem="Date" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="AccountID" RelativeSize="45.714285714285715" Index="1" />
+                <LayoutItem Id="Code" RelativeSize="36.363636363636367" Removed="True" />
+                <LayoutItem Id="Date" RelativeSize="27.272727272727273" Removed="True" />
+                <LayoutItem Id="SubTotal" RelativeSize="28.571428571428573" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Receipts_col2" RelativeSize="50" Caption="Receipts_col2" Removed="True">
+                <LayoutItem Id="OverallTotal" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Definition" RelativeSize="28.571428571428573" Removed="True" />
+                <LayoutItem Id="DiscountTotal" RelativeSize="36.363636363636367" Removed="True" />
+                <LayoutItem Id="TaxTotal" RelativeSize="27.272727272727273" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="19.88950276243094" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Detail_Group" Direction="Vertical" RelativeSize="81.742043551088784" Caption="Fatura Detay">
+            <LayoutItem Id="Detail" RelativeSize="75.824175824175825" />
+            <LayoutGroup Id="Auto426f3df4-8fb6-4483-b69b-4928d9ecc24b" ShowCaption="False" Caption="Auto426f3df4-8fb6-4483-b69b-4928d9ecc24b(11)" Direction="Horizontal" Index="1" RelativeSize="24.175824175824175" IsNewNode="True">
+              <LayoutItem Id="Definition" ViewItem="Definition" Index="0" RelativeSize="50" IsNewNode="True" />
+              <LayoutGroup Id="Auto046190a9-7cd4-469a-a43e-6a822d4cd01c" ShowCaption="False" Caption="Auto046190a9-7cd4-469a-a43e-6a822d4cd01c(13)" Index="1" RelativeSize="50" IsNewNode="True">
+                <LayoutItem Id="SubTotal" ViewItem="SubTotal" Index="0" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="DiscountTotal" ViewItem="DiscountTotal" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="TaxTotal" ViewItem="TaxTotal" Index="2" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="OverallTotal" ViewItem="OverallTotal" Index="3" RelativeSize="29.09090909090909" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Receipts_ListView">
+      <Columns>
+        <ColumnInfo Id="Definition" Index="-1" />
+        <ColumnInfo Id="Type" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SaleInvoice_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="18.257956448911223">
+            <LayoutGroup Id="Receipts" Index="0" RelativeSize="100" Direction="Vertical" Caption="Fatura Bilgileri">
+              <LayoutGroup Id="Receipts_col1" RelativeSize="100" Caption="Receipts_col1">
+                <LayoutGroup Id="Autobe2eceb2-de3b-47bc-92a5-141936ea5897" ShowCaption="False" Caption="Autobe2eceb2-de3b-47bc-92a5-141936ea5897(5)" Direction="Horizontal" Index="0" RelativeSize="54.285714285714285" IsNewNode="True">
+                  <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="Date" ViewItem="Date" Index="1" RelativeSize="50" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="AccountID" RelativeSize="45.714285714285715" Index="1" />
+                <LayoutItem Id="SubTotal" RelativeSize="36.363636363636367" Index="2" Removed="True" />
+                <LayoutItem Id="Code" RelativeSize="28.571428571428573" Removed="True" />
+                <LayoutItem Id="Date" RelativeSize="21.428571428571427" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Receipts_col2" RelativeSize="50" Caption="Receipts_col2" Removed="True">
+                <LayoutItem Id="Definition" RelativeSize="28.571428571428573" Removed="True" />
+                <LayoutItem Id="DiscountTotal" RelativeSize="100" Removed="True" />
+                <LayoutItem Id="OverallTotal" RelativeSize="50" Removed="True" />
+                <LayoutItem Id="TaxTotal" RelativeSize="71.428571428571431" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Index="1" RelativeSize="19.88950276243094" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Detail_Group" Direction="Vertical" RelativeSize="81.742043551088784" Caption="Fatura Detay">
+            <LayoutItem Id="Detail" RelativeSize="75.824175824175825" />
+            <LayoutGroup Id="Autod385c431-fbdf-408f-9d31-8076d22076e9" ShowCaption="False" Caption="Autod385c431-fbdf-408f-9d31-8076d22076e9(11)" Direction="Horizontal" Index="1" RelativeSize="24.175824175824175" IsNewNode="True">
+              <LayoutItem Id="Definition" ViewItem="Definition" Index="0" RelativeSize="50" IsNewNode="True" />
+              <LayoutGroup Id="Auto5367cf33-ee7e-4f37-aedd-e93dbf87f7c0" ShowCaption="False" Caption="Auto5367cf33-ee7e-4f37-aedd-e93dbf87f7c0(13)" Index="1" RelativeSize="50" IsNewNode="True">
+                <LayoutItem Id="SubTotal" ViewItem="SubTotal" Index="0" RelativeSize="27.272727272727273" IsNewNode="True" />
+                <LayoutItem Id="DiscountTotal" ViewItem="DiscountTotal" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="TaxTotal" ViewItem="TaxTotal" Index="2" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="OverallTotal" ViewItem="OverallTotal" Index="3" RelativeSize="29.09090909090909" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="SaleInvoice_ListView">
+      <Columns>
+        <ColumnInfo Id="Definition" Index="-1" />
+        <ColumnInfo Id="Type" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="Code" Index="1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Stock_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Stock" RelativeSize="100" Direction="Vertical">
+              <LayoutGroup Id="Stock_col1" RelativeSize="100" Caption="Stock_col1">
+                <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="5.7553956834532372" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="Definition" ViewItem="Definition" Index="1" RelativeSize="4.3165467625899279" IsNewNode="True" Removed="True" />
+                <LayoutGroup Id="Auto480750a0-2d2a-4de4-a1bd-ed0fb2d2021e" ShowCaption="False" Caption="" Direction="Horizontal" Index="2" RelativeSize="89.928057553956833" IsNewNode="True">
+                  <LayoutItem Id="Status" ViewItem="Status" Index="0" RelativeSize="37.1866295264624" IsNewNode="True" />
+                  <LayoutItem Id="UnitID" ViewItem="UnitID" Index="1" RelativeSize="34.818941504178269" IsNewNode="True" />
+                  <LayoutGroup Id="Auto88704b7d-03fd-4967-9141-c394639238b2" ShowCaption="False" Caption="" Index="2" RelativeSize="27.99442896935933" IsNewNode="True">
+                    <LayoutItem Id="SalePrice" ViewItem="SalePrice" Index="0" RelativeSize="4.8" IsNewNode="True" />
+                    <LayoutItem Id="PurchasePrice" ViewItem="PurchasePrice" Index="1" RelativeSize="4.8" IsNewNode="True" />
+                    <LayoutItem Id="Tax" ViewItem="Tax" Index="2" RelativeSize="90.4" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="Tax" RelativeSize="88.716502115655857" Removed="True" />
+                <LayoutItem Id="UnitID" RelativeSize="4.3165467625899279" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Stock_col2" RelativeSize="50.139275766016716" Caption="Stock_col2" Removed="True">
+                <LayoutItem Id="SalePrice" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Status" RelativeSize="85.533453887884264" Index="3" Removed="True" />
+                <LayoutItem Id="PurchasePrice" RelativeSize="5.7553956834532372" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="80.666666666666671" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Stock_ListView">
+      <Columns>
+        <ColumnInfo Id="PurchasePrice" Index="-1" />
+        <ColumnInfo Id="SalePrice" Index="-1" />
+        <ColumnInfo Id="Tax" Index="-1" />
+        <ColumnInfo Id="Status" Index="3" />
+        <ColumnInfo Id="Entering" Index="4" />
+        <ColumnInfo Id="Out" Index="5" />
+        <ColumnInfo Id="Remaining" Index="6" />
+      </Columns>
+      <Filters CurrentFilterId="active">
+        <Filter Id="All" Description="All" Criteria="[Status] = True Or [Status] = False" ImageName="State_Validation_Valid" Index="0" IsNewNode="True" />
+        <Filter Id="active" Caption="Active" Criteria="[Status] = True" ImageName="Action_Validation_Validate" Description="Active" IsNewNode="True" />
+        <Filter Id="Passive" Description="Passive" ImageName="Action_Deny" Criteria="[Status] = False" IsNewNode="True" />
+      </Filters>
+    </ListView>
+    <ListView Id="Stock_StockMovements_ListView">
+      <Columns>
+        <ColumnInfo Id="DiscountAmount" Index="-1" />
+        <ColumnInfo Id="DiscountRate" Index="-1" />
+        <ColumnInfo Id="NetTotal" Index="-1" />
+        <ColumnInfo Id="TaxAmount" Index="-1" />
+        <ColumnInfo Id="TaxRate" Index="-1" />
+        <ColumnInfo Id="Total" Index="-1" />
+        <ColumnInfo Id="UnitPrice" SortIndex="0" SortOrder="Ascending" Index="-1" />
+        <ColumnInfo Id="Date" Index="0" />
+        <ColumnInfo Id="ReceiptID" Index="1" />
+        <ColumnInfo Id="StockType" Index="2" />
+        <ColumnInfo Id="Amount" Index="3" />
+        <ColumnInfo Id="UnitID" Index="4" />
+        <ColumnInfo Id="OverallTotal" Index="5" />
+        <ColumnInfo Id="Definition" Index="6" />
+      </Columns>
+    </ListView>
+    <DetailView Id="StockMovements_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="StockMovements" RelativeSize="100">
+              <LayoutGroup Id="StockMovements_col1" RelativeSize="50">
+                <LayoutItem Id="Date" RelativeSize="4.5133991537376588" />
+                <LayoutItem Id="StockType" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="StockID" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="Amount" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="UnitID" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="UnitPrice" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="Total" RelativeSize="78.561354019746119" />
+              </LayoutGroup>
+              <LayoutGroup Id="StockMovements_col2" RelativeSize="50">
+                <LayoutItem Id="DiscountAmount" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="NetTotal" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="TaxRate" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="TaxAmount" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="OverallTotal" RelativeSize="3.3850493653032441" />
+                <LayoutItem Id="ReceiptID" RelativeSize="78.561354019746119" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="71.066666666666663" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Unit_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Unit" RelativeSize="100" Direction="Vertical" Caption="Unit">
+              <LayoutGroup Id="Auto5e6a1468-1f36-498e-a5cc-80d0a23ba799" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="5.3601340033500842" IsNewNode="True">
+                <LayoutItem Id="Code" ViewItem="Code" Index="0" RelativeSize="50" IsNewNode="True" />
+                <LayoutItem Id="Status" ViewItem="Status" Index="1" RelativeSize="25" IsNewNode="True" />
+                <LayoutItem Id="Default" ViewItem="Default" Index="2" RelativeSize="25" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="Definition" ViewItem="Definition" Index="1" RelativeSize="94.639865996649917" IsNewNode="True" Removed="True" />
+              <LayoutItem Id="Default" RelativeSize="90.619765494137354" Index="2" Removed="True" />
+              <LayoutItem Id="Code" RelativeSize="4.2666666666666666" Removed="True" />
+              <LayoutItem Id="Status" RelativeSize="3.2" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" RelativeSize="85.333333333333329" Removed="True">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Unit_ListView">
+      <Filters CurrentFilterId="active">
+        <Filter Id="All" Description="All" Criteria="[Status] = True Or [Status] = False" ImageName="State_Validation_Valid" Index="0" IsNewNode="True" />
+        <Filter Id="active" Caption="Active" Criteria="[Status] = True" ImageName="Action_Validation_Validate" Description="Active" IsNewNode="True" />
+        <Filter Id="Passive" Description="Passive" ImageName="Action_Deny" Criteria="[Status] = False" IsNewNode="True" />
+      </Filters>
+    </ListView>
+  </Views>
+</Application>

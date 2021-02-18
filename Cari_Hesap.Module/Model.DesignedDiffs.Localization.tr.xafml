@@ -1,0 +1,2025 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="ChangePasswordByUser" ToolTip="Şifremi Değiştir" ShortCaption="Şifremi Değiştir" Caption="Şifremi Değiştir" />
+      <Action Id="Delete" ToolTip="Sil" ShortCaption="Sil" Caption="Sil" />
+      <Action Id="Link" ToolTip="Bağlantı" ShortCaption="Bağlantı" Caption="Bağlantı" />
+      <Action Id="Logoff" ToolTip="Çıkış" ShortCaption="Çıkış" Caption="Çıkış" />
+      <Action Id="Logon" ToolTip="Giriş" ShortCaption="Giriş" Caption="Giriş" />
+      <Action Id="MyDetails" ToolTip="Hesabım" ShortCaption="Hesabım" Caption="Hesabım" />
+      <Action Id="New" ToolTip="Yeni" ShortCaption="Yeni" Caption="Yeni" />
+      <Action Id="NextObject" ToolTip="Sonraki Kayıt" ShortCaption="Sonraki Kayıt" Caption="Sonraki Kayıt" />
+      <Action Id="PreviousObject" ToolTip="Önceki Kayıt" ShortCaption="Önceki Kayıt" Caption="Önceki Kayıt" />
+      <Action Id="Refresh" ToolTip="Yenile" ShortCaption="Yenile" Caption="Yenile" />
+      <Action Id="RefreshAction" ToolTip="Yenile" ShortCaption="Yenile" Caption="Yenile" />
+      <Action Id="RefreshNotifications" ToolTip="Yenile" ShortCaption="Yenile" Caption="Yenile" />
+      <Action Id="ResetViewSettings" ToolTip="&quot;{0}&quot; görünümü için yapılan tüm ayarları sıfırlar." />
+      <Action Id="Save" ToolTip="Kaydet" ShortCaption="Kaydet" Caption="Kaydet" />
+      <Action Id="SaveAndClose" ToolTip="Kaydet ve Kapat" ShortCaption="Kaydet ve Kapat" Caption="Kaydet ve Kapat" />
+      <Action Id="SaveAndNew" ToolTip="Kaydet Ve Yeni" ShortCaption="Kaydet Ve Yeni" Caption="Kaydet Ve Yeni" />
+      <Action Id="Unlink" ToolTip="Bağlantıyı Kaldır" ShortCaption="Bağlantıyı Kaldır" Caption="Bağlantıyı Kaldır" />
+    </Actions>
+    <ActionToContainerMapping>
+      <ActionContainer Id="Link" Caption="Bağlantı" />
+      <ActionContainer Id="Save" Caption="Kaydet" />
+    </ActionToContainerMapping>
+    <DisableReasons>
+      <Reason Id="ByContext_RequireMultipleObjects" Caption="Tek bir nesnenin seçilmesini gerektirir" />
+      <Reason Id="ByContext_RequireSingleObject" Caption="Tek bir nesnenin seçilmesini gerektirir" />
+    </DisableReasons>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Account" Caption="Cari">
+      <OwnMembers>
+        <Member Name="Address" Caption="Adres" />
+        <Member Name="Balance" Caption="Bakiye" />
+        <Member Name="City" Caption="Şehir" />
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Country" Caption="Ülke" />
+        <Member Name="Debt" Caption="Borç" />
+        <Member Name="Definition" Caption="Açıklama" />
+        <Member Name="Discount" Caption="İndirim" />
+        <Member Name="DiscountRate" Caption="İndirim Oran" />
+        <Member Name="MoneyMovement" Caption="Para Hareketleri" />
+        <Member Name="Phone" Caption="Telefon" />
+        <Member Name="PurchaseSaleTransaction" Caption="Alış Satış Hareketleri" />
+        <Member Name="Receivable" Caption="Alacak" />
+        <Member Name="Status" Caption="Durum" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.AccountCollection" Caption="Cari Tahsilat">
+      <OwnMembers>
+        <Member Name="AccountBalance" Caption="Hesap Bakiye" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.AccountPayment" Caption="Cari Ödeme">
+      <OwnMembers>
+        <Member Name="AccountBalance" Caption="Hesap Bakiye" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.BankAccounts" Caption="Banka Hesapları">
+      <OwnMembers>
+        <Member Name="Account" Caption="Hesap" />
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Explanation" Caption="Açıklama" />
+        <Member Name="InternationalBankAccountNumber" Caption="IBAN" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.BankBranches" Caption="Banka Şubeleri">
+      <OwnMembers>
+        <Member Name="BankAccounts" Caption="Banka Hesapları" />
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Definition" Caption="Tanım" />
+        <Member Name="Explanation" Caption="Açıklama" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.BankCollection" Caption="Banka Tahsilat" />
+    <Class Name="Cari_Hesap.Module.BusinessObjects.BankPayment" Caption="Banka Ödeme" />
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Banks" Caption="Bankalar">
+      <OwnMembers>
+        <Member Name="BankBranches" Caption="Banka Şubeleri" />
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Definition" Caption="Açıklama" />
+        <Member Name="Explanation" Caption="Açıklama" />
+        <Member Name="SwiftCode" Caption="Uluslararası Kod" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.BankTransactions" Caption="Banka Hareketleri" />
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Case" Caption="Kasa">
+      <OwnMembers>
+        <Member Name="Balance" Caption="Bakiye" />
+        <Member Name="CaseMovement" Caption="Kasa Hareketleri" />
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Collection" Caption="Tahsilat" />
+        <Member Name="Definition" Caption="Tanım" />
+        <Member Name="Explanation" Caption="Açıklama" />
+        <Member Name="Payment" Caption="Ödeme" />
+        <Member Name="Status" Caption="Durum" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.CaseExpensePayment" Caption="Kasa Masraf Ödeme" />
+    <Class Name="Cari_Hesap.Module.BusinessObjects.CaseTransactions" Caption="Kasa Hareketleri">
+      <OwnMembers>
+        <Member Name="Amount" Caption="Tutar" />
+        <Member Name="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Date" Caption="Tarih" />
+        <Member Name="Definition" Caption="Tanım" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.ExpenseGroup">
+      <OwnMembers>
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Definition" Caption="Açıklama" />
+        <Member Name="Expenses" Caption="Masraflar" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Expenses" Caption="Masraflar">
+      <OwnMembers>
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Definition" Caption="Açıklama" />
+        <Member Name="ExpenseDetail" Caption="Masraf Detay" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.PurchaseInvoice" Caption="Alış Faturası" />
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Receipts">
+      <OwnMembers>
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Date" Caption="Tarih" />
+        <Member Name="Definition" Caption="Açıklama" />
+        <Member Name="DiscountTotal" Caption="İndirim Toplam" />
+        <Member Name="OverallTotal" Caption="Genel Toplam" />
+        <Member Name="SubTotal" Caption="Alt Toplam" />
+        <Member Name="TaxTotal" Caption="Vergi Toplam" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.SaleInvoice" Caption="Satış Faturası" />
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Stock" Caption="Stok">
+      <OwnMembers>
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Definition" Caption="Açıklama" />
+        <Member Name="Entering" Caption="Giren" />
+        <Member Name="Out" Caption="Çıkan" />
+        <Member Name="PurchasePrice" Caption="Alış Fiyatı" />
+        <Member Name="Remaining" Caption="Kalan" />
+        <Member Name="SalePrice" Caption="Satış Ücreti" />
+        <Member Name="Status" Caption="Durum" />
+        <Member Name="StockMovements" Caption="Stok Hareketleri" />
+        <Member Name="Tax" Caption="Vergi" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.StockMovements" Caption="Stok Hareketleri">
+      <OwnMembers>
+        <Member Name="Amount" Caption="Adet" />
+        <Member Name="Date" Caption="Tarih" />
+        <Member Name="Definition" Caption="Açıklama" />
+        <Member Name="DiscountAmount" Caption="İndirim" />
+        <Member Name="DiscountRate" Caption="İndirim Oran" />
+        <Member Name="NetTotal" Caption="Net Toplam" />
+        <Member Name="OverallTotal" Caption="Genel Toplam" />
+        <Member Name="StockType" Caption="Stok Türü" />
+        <Member Name="TaxAmount" Caption="Vergi Tutar" />
+        <Member Name="TaxRate" Caption="Vergi Oran" />
+        <Member Name="Total" Caption="Toplam" />
+        <Member Name="UnitPrice" Caption="Birim Fiyat" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Cari_Hesap.Module.BusinessObjects.Unit" Caption="Birim">
+      <OwnMembers>
+        <Member Name="Code" Caption="Kod" />
+        <Member Name="Default" Caption="Varsayılan" />
+        <Member Name="Definition" Caption="Açıklama" />
+        <Member Name="Status" Caption="Durum" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Notifications.Notification">
+      <OwnMembers>
+        <Member Name="Subject" Caption="Konu" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters">
+      <OwnMembers>
+        <Member Name="Password" Caption="Şifre" />
+        <Member Name="UserName" Caption="Kullanıcı Adı" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Security.ChangePasswordOnLogonParameters">
+      <OwnMembers>
+        <Member Name="NewPassword" Caption="Yeni Parola" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Security.ProceedMember">
+      <OwnMembers>
+        <Member Name="Name" Caption="Ad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Security.ResetPasswordParameters">
+      <OwnMembers>
+        <Member Name="Password" Caption="Şifre" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.SystemModule.AboutInfo">
+      <OwnMembers>
+        <Member Name="Description" Caption="Açıklama" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.SystemModule.DashboardCreationInfo">
+      <OwnMembers>
+        <Member Name="DashboardName" Caption="Ad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.SystemModule.DashboardName">
+      <OwnMembers>
+        <Member Name="Name" Caption="Ad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.SystemModule.DashboardViewItemDescriptor">
+      <OwnMembers>
+        <Member Name="ViewCaption" Caption="Başlığı Görüntüle" />
+        <Member Name="ViewDescription" Caption="Açıklamayı Görüntüle" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.Validation.AllContextsView.DisplayableValidationResultItem">
+      <OwnMembers>
+        <Member Name="RuleName" Caption="Rol Adı" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.AuditDataItemPersistent" Caption="Denetim Etkinliği">
+      <OwnMembers>
+        <Member Name="Description" Caption="Açıklama" />
+        <Member Name="UserName" Caption="Kullanıcı Adı" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.Event" Caption="Zamanlayıcı Etkinliği">
+      <OwnMembers>
+        <Member Name="AlarmTime" Caption="Alarm zamanı" />
+        <Member Name="AllDay" Caption="Tüm Gün" />
+        <Member Name="Description" Caption="Açıklama" />
+        <Member Name="EndOn" Caption="Bitiş Tarihi / Saati" />
+        <Member Name="Label" Caption="Etiket" />
+        <Member Name="Location" Caption="Konum" />
+        <Member Name="NotificationMessage" Caption="Bildirim Mesajı" />
+        <Member Name="RecurrenceInfoXml" Caption="Tekrarlama" />
+        <Member Name="RecurrencePattern" Caption="Tekrarlama paterni" />
+        <Member Name="ReminderTime" Caption="Hatırlatma Zamanı" />
+        <Member Name="Resources" Caption="Kaynaklar" />
+        <Member Name="StartOn" Caption="Başlangıç Tarihi / Saati" />
+        <Member Name="Status" Caption="Durum" />
+        <Member Name="Subject" Caption="Konu" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.HCategory">
+      <OwnMembers>
+        <Member Name="Name" Caption="Ad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.ModelDifference">
+      <OwnMembers>
+        <Member Name="UserName" Caption="Kullanıcı Adı" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.ModelDifferenceAspect">
+      <OwnMembers>
+        <Member Name="Name" Caption="Ad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.Resource" Caption="Kaynak">
+      <OwnMembers>
+        <Member Name="Color" Caption="Renk" />
+        <Member Name="Events" Caption="Etkinlikler" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.Validation.IRuleBaseProperties">
+      <OwnMembers>
+        <Member Name="Name" Caption="Ad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.Validation.IRuleStringComparisonProperties">
+      <OwnMembers>
+        <Member Name="IgnoreCase" Caption="Vakayı Yoksay" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.Validation.RuleBaseProperties">
+      <OwnMembers>
+        <Member Name="Name" Caption="Ad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.Validation.RuleSetValidationResultItem">
+      <OwnMembers>
+        <Member Name="RuleName" Caption="Rol Adı" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.Validation.RuleStringComparisonProperties">
+      <OwnMembers>
+        <Member Name="IgnoreCase" Caption="Vakayı Yoksay" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <CreatableItems>
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.Account" Caption="Cari" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.AccountCollection" Caption="Cari Tahsilat" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.AccountPayment" Caption="Cari Ödeme" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.BankAccounts" Caption="Banka Hesapları" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.BankBranches" Caption="Banka Şubeleri" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.BankCollection" Caption="Banka Tahsilat" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.BankPayment" Caption="Banka Ödeme" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.Banks" Caption="Bankalar" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.BankTransactions" Caption="Banka Hareketleri" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.Case" Caption="Kasa" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.CaseExpensePayment" Caption="Kasa Masraf Ödeme" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.CaseTransactions" Caption="Kasa Hareketleri" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.Expenses" Caption="Masraflar" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.PurchaseInvoice" Caption="Alış Faturası" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.SaleInvoice" Caption="Satış Faturası" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.Stock" Caption="Stok" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.StockMovements" Caption="Stok Hareketleri" />
+    <CreatableItem ClassName="Cari_Hesap.Module.BusinessObjects.Unit" Caption="Birim" />
+  </CreatableItems>
+  <Localization>
+    <LocalizationGroup Name="DialogButtons">
+      <LocalizationItem Name="Delete" Value="Sil" />
+    </LocalizationGroup>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="Cari_Hesap.Module.Enum.CaseMovementType" Value="Kasa Hareket Türü" />
+      <LocalizationGroup Name="Cari_Hesap.Module.Enum.StockMovementType" Value="Stok Hareket Türü">
+        <LocalizationItem Name="Input" Value="Girdi" />
+        <LocalizationItem Name="Output" Value="Çıktı" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Notifications.NotificationItemState">
+        <LocalizationItem Name="Active" Value="Aktif" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Notifications.NotificationsType">
+        <LocalizationItem Name="Active" Value="Aktif" />
+        <LocalizationItem Name="All" Value="Hepsi" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Security.ObjectAccess">
+        <LocalizationItem Name="Delete" Value="Sil" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Security.SecurityRequestOperations">
+        <LocalizationItem Name="Delete" Value="Sil" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="DevExpress.ExpressApp.Templates.ActionsToolbarVisibility">
+        <LocalizationItem Name="Default" Value="Varsayılan" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+    <LocalizationGroup Name="Exceptions">
+      <LocalizationGroup Name="SystemExceptions">
+        <LocalizationItem Name="CannotAccessCollectionCollectionSourceIsBeingIntialized" Value="Koleksiyon Kaynağı şu anda başlatıldığı için Koleksiyon özelliğine erişemezsiniz. Bu hata, örneğin, bir ViewController'ın OnActivated yönteminde Collection özelliğine erişmeye çalıştığınızda ortaya çıkabilir. Bu hatayı önlemek için, Koleksiyon özelliğine, Koleksiyon Kaynağı zaten başlatıldığında daha sonra erişmek gerekir. Bunu yapmanın en iyi yolu CollectionChanged olayını işlemektir. Bu sınıflar ve yöntemler hakkında daha ayrıntılı bilgi için lütfen ürünün belgelerine bakın. Bu yardımcı olmazsa, lütfen http://www.devexpress.com/Support/Center/ adresinden Destek Ekibimizle iletişime geçin." />
+        <LocalizationItem Name="CustomizePopupWindowParamsEventArgsViewIsNull" Value="Bu hatadan kaçınmak için CustomizePopupWindowParams olayını işlerken CustomizePopupWindowParamsEventArgs.View özelliğini atamak gerekir. Bunu başarmak için, XafApplication.CreateDetailView / CreateListView yöntemlerini kullanarak bir View oluşturun. Bu sınıflar ve yöntemler hakkında daha ayrıntılı bilgi için lütfen ürünün belgelerine bakın. Bu yardımcı olmazsa, lütfen http://www.devexpress.com/Support/Center/ adresinden Destek Ekibimizle iletişime geçin." />
+      </LocalizationGroup>
+    </LocalizationGroup>
+    <LocalizationGroup Name="Messages">
+      <LocalizationItem Name="Delete" Value="Sil" />
+    </LocalizationGroup>
+  </Localization>
+  <NavigationItems>
+    <Items>
+      <Item Id="Default" Caption="Varsayılan" />
+    </Items>
+  </NavigationItems>
+  <Validation>
+    <Contexts>
+      <ValidationContext Id="Save" Caption="Kaydet" />
+    </Contexts>
+    <Rules>
+      <RuleFromBoolProperty Id="EventIntervalValid" CustomMessageTemplate="Başlangıç tarihi, bitiş tarihinden küçük olmalıdır" MessageTemplateTargetDoesNotSatisfyTargetCriteria="Hedef nesne kuralın hedef kriterlerini karşılamadığından &quot;{Id}&quot; kuralı kontrol edilmedi." MessageTemplateTargetDoesNotSatisfyCollectionCriteria="Hedef, &quot;{TargetCollectionOwnerType}. {TargetCollectionPropertyName}&quot; koleksiyonunun bir öğesi olmadığından &quot;{Id}&quot; kuralı kontrol edilmedi." MessageTemplateSkipNullOrEmptyValues="Hedef özelliklerden biri boş olduğu için &quot;{Id}&quot; kuralı kontrol edilmedi.&#xD;&#xA;" MessageTemplateMustBeTrue="&quot;{TargetPropertyName}&quot; doğru olarak ayarlanmalıdır." />
+    </Rules>
+  </Validation>
+  <Views>
+    <DetailView Id="AboutInfo_DetailView" Caption="Hakkında" />
+    <DetailView Id="Account_DetailView" Caption="Cari">
+      <Items>
+        <PropertyEditor Id="Address" Caption="Adres" />
+        <PropertyEditor Id="Balance" Caption="Bakiye" />
+        <PropertyEditor Id="City" Caption="Şehir" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Country" Caption="Ülke" />
+        <PropertyEditor Id="Debt" Caption="Borç" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+        <PropertyEditor Id="Discount" Caption="İndirim" />
+        <PropertyEditor Id="DiscountRate" Caption="İndirim Oran" />
+        <PropertyEditor Id="MoneyMovement" Caption="Para Hareketleri" />
+        <PropertyEditor Id="Phone" Caption="Telefon" />
+        <PropertyEditor Id="PurchaseSaleTransaction" Caption="Alış Satış Hareketleri" />
+        <PropertyEditor Id="Receivable" Caption="Alacak" />
+        <PropertyEditor Id="Status" Caption="Durum" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Account" Caption="Cari" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="PurchaseSaleTransaction" Caption="Alış Satış Hareketleri" />
+            <LayoutGroup Id="MoneyMovement" Caption="Para Hareketleri" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Account_ListView" Caption="Cariler">
+      <Columns>
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="Address" Caption="Adres" />
+        <ColumnInfo Id="City" Caption="Şehir" />
+        <ColumnInfo Id="Country" Caption="Ülke" />
+        <ColumnInfo Id="Phone" Caption="Telefon" />
+        <ColumnInfo Id="Status" Caption="Durum" />
+        <ColumnInfo Id="Receivable" Caption="Alacak" />
+        <ColumnInfo Id="Debt" Caption="Borç" />
+        <ColumnInfo Id="Balance" Caption="Bakiye" />
+        <ColumnInfo Id="Discount" Caption="İndirim" />
+        <ColumnInfo Id="DiscountRate" Caption="İndirim Oran" />
+      </Columns>
+      <Filters>
+        <Filter Id="All" Caption="Hepsi" Description="Hepsi" />
+        <Filter Id="active" Caption="Aktif" Description="Aktif" />
+        <Filter Id="Passive" Caption="Pasif" Description="Pasif" />
+      </Filters>
+    </ListView>
+    <ListView Id="Account_LookupListView" Caption="Cari">
+      <Columns>
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="Address" Caption="Adres" />
+        <ColumnInfo Id="City" Caption="Şehir" />
+        <ColumnInfo Id="Country" Caption="Ülke" />
+        <ColumnInfo Id="Phone" Caption="Telefon" />
+        <ColumnInfo Id="Status" Caption="Durum" />
+        <ColumnInfo Id="Receivable" Caption="Alacak" />
+        <ColumnInfo Id="Debt" Caption="Borç" />
+        <ColumnInfo Id="Balance" Caption="Bakiye" />
+        <ColumnInfo Id="Discount" Caption="İndirim" />
+        <ColumnInfo Id="DiscountRate" Caption="İndirim Oran" />
+      </Columns>
+    </ListView>
+    <ListView Id="Account_MoneyMovement_ListView" Caption="Kasa Hareketleri">
+      <Columns>
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+      </Columns>
+    </ListView>
+    <ListView Id="Account_PurchaseSaleTransaction_ListView">
+      <Columns>
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="SubTotal" Caption="Alt Toplam" />
+        <ColumnInfo Id="DiscountTotal" Caption="İndirim Toplam" />
+        <ColumnInfo Id="TaxTotal" Caption="Vergi Toplam" />
+        <ColumnInfo Id="OverallTotal" Caption="Genel Toplam" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <DetailView Id="AccountCollection_DetailView" Caption="Cari Tahsilat">
+      <Items>
+        <PropertyEditor Id="AccountBalance" Caption="Hesap Bakiye" />
+        <PropertyEditor Id="Amount" Caption="Tutar" />
+        <PropertyEditor Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="AccountCollection" Caption="Hesap Bakiye" />
+            <LayoutGroup Id="CaseTransactions" Caption="Kasa Hareketleri" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="AccountCollection_ListView" Caption="Cari Tahsilat">
+      <Columns>
+        <ColumnInfo Id="AccountBalance" Caption="Hesap Bakiye" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="AccountCollection_LookupListView" Caption="Cari Tahsilat">
+      <Columns>
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="AccountBalance" Caption="Hesap Bakiye" />
+      </Columns>
+    </ListView>
+    <DetailView Id="AccountPayment_DetailView" Caption="Cari Ödeme">
+      <Items>
+        <PropertyEditor Id="AccountBalance" Caption="Hesap Bakiye" />
+        <PropertyEditor Id="Amount" Caption="Tutar" />
+        <PropertyEditor Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="AccountPayment" Caption="Hesap Bakiye" />
+            <LayoutGroup Id="CaseTransactions" Caption="Kasa Hareketleri" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="AccountPayment_ListView" Caption="Cari Ödeme">
+      <Columns>
+        <ColumnInfo Id="AccountBalance" Caption="Hesap Bakiye" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="AccountPayment_LookupListView" Caption="Cari Ödeme">
+      <Columns>
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="AccountBalance" Caption="Hesap Bakiye" />
+      </Columns>
+    </ListView>
+    <DetailView Id="AuditDataItemPersistent_DetailView" Caption="Denetim Etkinliği">
+      <Items>
+        <PropertyEditor Id="Description" Caption="Açıklama" />
+        <PropertyEditor Id="UserName" Caption="Kullanıcı Adı" />
+      </Items>
+    </DetailView>
+    <ListView Id="AuditDataItemPersistent_ListView" Caption="Denetim Etkinliği">
+      <Columns>
+        <ColumnInfo Id="Description" Caption="Açıklama" />
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="AuditDataItemPersistent_LookupListView" Caption="Denetim Etkinliği">
+      <Columns>
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="AuditedObjectWeakReference_AuditDataItems_ListView" Caption="Denetim Etkinliği">
+      <Columns>
+        <ColumnInfo Id="Description" Caption="Açıklama" />
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+      </Columns>
+    </ListView>
+    <DetailView Id="AuthenticationStandardLogonParameters_DetailView" Caption="Giriş">
+      <Items>
+        <PropertyEditor Id="Password" Caption="Şifre" />
+        <PropertyEditor Id="UserName" Caption="Kullanıcı Adı" />
+      </Items>
+    </DetailView>
+    <ListView Id="AuthenticationStandardLogonParameters_ListView">
+      <Columns>
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+        <ColumnInfo Id="Password" Caption="Şifre" />
+      </Columns>
+    </ListView>
+    <ListView Id="AuthenticationStandardLogonParameters_LookupListView">
+      <Columns>
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+      </Columns>
+    </ListView>
+    <DetailView Id="BankAccounts_DetailView" Caption="Banka Hesapları">
+      <Items>
+        <PropertyEditor Id="Account" Caption="Hesap" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Explanation" Caption="Açıklama" />
+        <PropertyEditor Id="InternationalBankAccountNumber" Caption="IBAN" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="BankAccounts" Caption="Banka Hesapları" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="BankAccounts_ListView" Caption="Banka Hesapları">
+      <Columns>
+        <ColumnInfo Id="Account" Caption="Hesap" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="InternationalBankAccountNumber" Caption="IBAN" />
+        <ColumnInfo Id="Explanation" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="BankAccounts_LookupListView" Caption="Banka Hesapları">
+      <Columns>
+        <ColumnInfo Id="Account" Caption="Hesap" />
+      </Columns>
+    </ListView>
+    <ListView Id="BankBranches_BankAccounts_ListView" Caption="Banka Hesapları">
+      <Columns>
+        <ColumnInfo Id="Account" Caption="Hesap" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="InternationalBankAccountNumber" Caption="IBAN" />
+        <ColumnInfo Id="Explanation" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <DetailView Id="BankBranches_DetailView" Caption="Banka Şubeleri">
+      <Items>
+        <PropertyEditor Id="BankAccounts" Caption="Banka Hesapları" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Definition" Caption="Tanım" />
+        <PropertyEditor Id="Explanation" Caption="Açıklama" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="BankBranches" Caption="Banka Şubeleri" />
+          </LayoutGroup>
+          <LayoutGroup Id="BankAccounts_Group" Caption="Banka Hesapları" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="BankBranches_ListView" Caption="Banka Şubeleri">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Explanation" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="BankBranches_LookupListView" Caption="Banka Şubeleri">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+      </Columns>
+    </ListView>
+    <DetailView Id="BankCollection_DetailView" Caption="Banka Tahsilat">
+      <Items>
+        <PropertyEditor Id="Amount" Caption="Tutar" />
+        <PropertyEditor Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors" Caption="Açıklama" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="BankCollection_ListView" Caption="Banka Tahsilat">
+      <Columns>
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="BankCollection_LookupListView" Caption="Banka Tahsilat">
+      <Columns>
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <DetailView Id="BankPayment_DetailView" Caption="Banka Ödeme">
+      <Items>
+        <PropertyEditor Id="Amount" Caption="Tutar" />
+        <PropertyEditor Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors" Caption="Açıklama" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="BankPayment_ListView" Caption="Banka Ödeme">
+      <Columns>
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="BankPayment_LookupListView" Caption="Banka Ödeme">
+      <Columns>
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="Banks_BankBranches_ListView" Caption="Banka Şubeleri">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Explanation" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Banks_DetailView" Caption="Bankalar">
+      <Items>
+        <PropertyEditor Id="BankBranches" Caption="Banka Şubeleri" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Definition" Caption="Tanım" />
+        <PropertyEditor Id="Explanation" Caption="Açıklama" />
+        <PropertyEditor Id="SwiftCode" Caption="Uluslararası Kod" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Banks" Caption="Bankalar" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Banks_ListView" Caption="Bankalar">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Explanation" Caption="Açıklama" />
+        <ColumnInfo Id="SwiftCode" Caption="Uluslararası Kod" />
+      </Columns>
+    </ListView>
+    <ListView Id="Banks_LookupListView" Caption="Bankalar">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+      </Columns>
+    </ListView>
+    <DetailView Id="BankTransactions_DetailView" Caption="Banka Hareketleri">
+      <Items>
+        <PropertyEditor Id="Amount" Caption="Tutar" />
+        <PropertyEditor Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="BankTransactions" Caption="Banka Hareketleri" />
+            <LayoutGroup Id="CaseTransactions" Caption="Kasa Hareketleri" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Caption="Açıklama" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="BankTransactions_ListView" Caption="Banka Hareketleri">
+      <Columns>
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="BankTransactions_LookupListView" Caption="Banka Hareketleri">
+      <Columns>
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="Case_CaseMovement_ListView" Caption="Kasa Hareketleri">
+      <Columns>
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Case_DetailView" Caption="Kasa">
+      <Items>
+        <PropertyEditor Id="Balance" Caption="Bakiye" />
+        <PropertyEditor Id="CaseMovement" Caption="Kasa Hareketleri" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Collection" Caption="Tahsilat" />
+        <PropertyEditor Id="Definition" Caption="Tanım" />
+        <PropertyEditor Id="Explanation" Caption="Açıklama" />
+        <PropertyEditor Id="Payment" Caption="Ödeme" />
+        <PropertyEditor Id="Status" Caption="Durum" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Case" Caption="Kasa" />
+          </LayoutGroup>
+          <LayoutGroup Id="CaseMovement_Group" Caption="Kasa Hareketleri" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Case_ListView" Caption="Kasa">
+      <Columns>
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Explanation" Caption="Açıklama" />
+        <ColumnInfo Id="Status" Caption="Durum" />
+        <ColumnInfo Id="Collection" Caption="Tahsilat" />
+        <ColumnInfo Id="Payment" Caption="Ödeme" />
+        <ColumnInfo Id="Balance" Caption="Bakiye" />
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+      </Columns>
+      <Filters>
+        <Filter Id="All" Description="Hepsi" Caption="Hepsi" />
+        <Filter Id="active" Caption="Aktif" Description="Aktif" />
+        <Filter Id="Passive" Description="Pasif" Caption="Pasif" />
+      </Filters>
+    </ListView>
+    <ListView Id="Case_LookupListView" Caption="Kasa">
+      <Columns>
+        <ColumnInfo Id="Explanation" Caption="Açıklama" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+        <ColumnInfo Id="Status" Caption="Durum" />
+        <ColumnInfo Id="Collection" Caption="Tahsilat" />
+        <ColumnInfo Id="Payment" Caption="Ödeme" />
+        <ColumnInfo Id="Balance" Caption="Bakiye" />
+      </Columns>
+    </ListView>
+    <DetailView Id="CaseExpensePayment_DetailView" Caption="Kasa Masraf Ödemesi">
+      <Items>
+        <PropertyEditor Id="Amount" Caption="Tutar" />
+        <PropertyEditor Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Tanım" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="CaseTransactions" Caption="Kasa Hareketleri" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="CaseExpensePayment_ListView" Caption="Kasa Masraf Ödeme">
+      <Columns>
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+      </Columns>
+    </ListView>
+    <ListView Id="CaseExpensePayment_LookupListView" Caption="Kasa Masraf Ödeme">
+      <Columns>
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+      </Columns>
+    </ListView>
+    <DetailView Id="CaseTransactions_DetailView" Caption="Kasa Hareketleri">
+      <Items>
+        <PropertyEditor Id="Amount" Caption="Tutar" />
+        <PropertyEditor Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Tanım" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="CaseTransactions" Caption="Kasa Hareketleri" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Caption="Tanım" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="CaseTransactions_ListView" Caption="Kasa Hareketleri">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+      </Columns>
+    </ListView>
+    <ListView Id="CaseTransactions_LookupListView" Caption="Kasa Hareketleri">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Tanım" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ChangePasswordOnLogonParameters_DetailView">
+      <Items>
+        <PropertyEditor Id="NewPassword" Caption="Yeni Parola" />
+      </Items>
+    </DetailView>
+    <ListView Id="ChangePasswordOnLogonParameters_ListView">
+      <Columns>
+        <ColumnInfo Id="NewPassword" Caption="Yeni Parola" />
+      </Columns>
+    </ListView>
+    <ListView Id="ChangePasswordOnLogonParameters_LookupListView">
+      <Columns>
+        <ColumnInfo Id="NewPassword" Caption="Yeni Parola" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ChangePasswordParameters_DetailView">
+      <Items>
+        <PropertyEditor Id="NewPassword" Caption="Yeni Parola" />
+      </Items>
+    </DetailView>
+    <ListView Id="ChangePasswordParameters_ListView">
+      <Columns>
+        <ColumnInfo Id="NewPassword" Caption="Yeni Parola" />
+      </Columns>
+    </ListView>
+    <ListView Id="ChangePasswordParameters_LookupListView">
+      <Columns>
+        <ColumnInfo Id="NewPassword" Caption="Yeni Parola" />
+      </Columns>
+    </ListView>
+    <ListView Id="ContextValidationResult_DisplayableValidationResultItems_ListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+        <ColumnInfo Id="RuleProperties.Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="DashboardCreationInfo_DetailView">
+      <Items>
+        <PropertyEditor Id="DashboardName" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="DashboardCreationInfo_ListView">
+      <Columns>
+        <ColumnInfo Id="DashboardName" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="DashboardCreationInfo_LookupListView">
+      <Columns>
+        <ColumnInfo Id="DashboardName" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="DashboardName_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="DashboardName_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="DashboardName_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="DashboardViewItemDescriptor_DetailView">
+      <Items>
+        <PropertyEditor Id="ViewCaption" Caption="Başlığı Görüntüle" />
+        <PropertyEditor Id="ViewDescription" Caption="Açıklamayı Görüntüle" />
+      </Items>
+    </DetailView>
+    <ListView Id="DashboardViewItemDescriptor_ListView">
+      <Columns>
+        <ColumnInfo Id="ViewDescription" Caption="Açıklamayı Görüntüle" />
+        <ColumnInfo Id="ViewCaption" Caption="Başlığı Görüntüle" />
+      </Columns>
+    </ListView>
+    <ListView Id="DashboardViewItemDescriptor_LookupListView">
+      <Columns>
+        <ColumnInfo Id="ViewDescription" Caption="Açıklamayı Görüntüle" />
+      </Columns>
+    </ListView>
+    <DetailView Id="DisplayableValidationResultItem_DetailView">
+      <Items>
+        <PropertyEditor Id="RuleName" Caption="Rol Adı" />
+      </Items>
+    </DetailView>
+    <ListView Id="DisplayableValidationResultItem_ListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+        <ColumnInfo Id="RuleProperties.Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="DisplayableValidationResultItem_LookupListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Event_DetailView" Caption="Zamanlayıcı Etkinliği">
+      <Items>
+        <PropertyEditor Id="AlarmTime" Caption="Alarm zamanı" />
+        <PropertyEditor Id="AllDay" Caption="Tüm Gün" />
+        <PropertyEditor Id="Description" Caption="Açıklama" />
+        <PropertyEditor Id="EndOn" Caption="Bitiş Tarihi / Saati" />
+        <PropertyEditor Id="Label" Caption="Etiket" />
+        <PropertyEditor Id="Location" Caption="Konum" />
+        <PropertyEditor Id="NotificationMessage" Caption="Bildirim Mesajı" />
+        <PropertyEditor Id="RecurrenceInfoXml" Caption="Tekrarlama" />
+        <PropertyEditor Id="RecurrencePattern" Caption="Tekrarlama paterni" />
+        <PropertyEditor Id="ReminderTime" Caption="Hatırlatma" />
+        <PropertyEditor Id="Resources" Caption="Kaynaklar" />
+        <PropertyEditor Id="StartOn" Caption="Başlangıç Tarihi / Saati" />
+        <PropertyEditor Id="Status" Caption="Durum" />
+        <PropertyEditor Id="Subject" Caption="Konu" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="SubjectGroup" Caption="Konu Grup" />
+          </LayoutGroup>
+          <LayoutGroup Id="Resources_Group" Caption="Kaynaklar" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Event_ListView" Caption="Zamanlayıcı Etkinliği">
+      <Columns>
+        <ColumnInfo Id="AlarmTime" Caption="Alarm zamanı" />
+        <ColumnInfo Id="Description" Caption="Açıklama" />
+        <ColumnInfo Id="NotificationMessage" Caption="Bildirim Mesajı" />
+        <ColumnInfo Id="RecurrenceInfoXml" Caption="Tekrarlama" />
+        <ColumnInfo Id="ReminderTime" Caption="Hatırlatma Zamanı" />
+        <ColumnInfo Id="Subject" Caption="Konu" />
+        <ColumnInfo Id="StartOn" Caption="Başlangıç Tarihi / Saati" />
+        <ColumnInfo Id="EndOn" Caption="Bitiş Tarihi / Saati" />
+        <ColumnInfo Id="AllDay" Caption="Tüm Gün" />
+        <ColumnInfo Id="Location" Caption="Konum" />
+        <ColumnInfo Id="Label" Caption="Etiket" />
+        <ColumnInfo Id="Status" Caption="Durum" />
+        <ColumnInfo Id="RecurrencePattern" Caption="Tekrarlama paterni" />
+      </Columns>
+    </ListView>
+    <ListView Id="Event_LookupListView" Caption="Zamanlayıcı Etkinliği">
+      <Columns>
+        <ColumnInfo Id="Subject" Caption="Konu" />
+      </Columns>
+    </ListView>
+    <ListView Id="Event_Resources_ListView" Caption="Kaynaklar">
+      <Columns>
+        <ColumnInfo Id="Color" Caption="Renk" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ExpenseGroup_DetailView" Caption="Masraf Grup">
+      <Items>
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+        <PropertyEditor Id="Expenses" Caption="Masraflar" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ExpenseGroup" Caption="Masraf Grup" />
+          </LayoutGroup>
+          <LayoutGroup Id="Expenses_Group" Caption="Masraflar" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="ExpenseGroup_Expenses_ListView" Caption="Masraflar">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+      </Columns>
+    </ListView>
+    <ListView Id="ExpenseGroup_ListView">
+      <Columns>
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="ExpenseGroup_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Expenses_DetailView" Caption="Masraflar">
+      <Items>
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+        <PropertyEditor Id="ExpenseDetail" Caption="Masraf Detay" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Expenses" Caption="Masraflar" />
+          </LayoutGroup>
+          <LayoutGroup Id="ExpenseDetail_Group" Caption="Masraf Detay" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Expenses_ExpenseDetail_ListView" Caption="Kasa Masraf Ödemesi">
+      <Columns>
+        <ColumnInfo Id="CaseMovementType" Caption="Kasa Hareket Türü" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Amount" Caption="Tutar" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="Expenses_ListView" Caption="Masraflar">
+      <Columns>
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="Expenses_LookupListView" Caption="Masraflar">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="HCategory_Children_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="HCategory_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="HCategory_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="HCategory_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleBaseProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleBaseProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleBaseProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleCollectionPropertyProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleCollectionPropertyProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleCollectionPropertyProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleCombinationOfPropertiesIsUniqueProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleCombinationOfPropertiesIsUniqueProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleCombinationOfPropertiesIsUniqueProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleCriteriaProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleCriteriaProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleCriteriaProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleFromBoolPropertyProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleFromBoolPropertyProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleFromBoolPropertyProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleIsReferencedProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleIsReferencedProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleIsReferencedProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleObjectExistsProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleObjectExistsProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleObjectExistsProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRulePropertyValueProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRulePropertyValueProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRulePropertyValueProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleRangeProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleRangeProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleRangeProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleRegularExpressionProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleRegularExpressionProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleRegularExpressionProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleRequiredFieldProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleRequiredFieldProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleRequiredFieldProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleSearchObjectProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleSearchObjectProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleSearchObjectProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleStringComparisonProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="IgnoreCase" Caption="Vakayı Yoksay" />
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleStringComparisonProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+        <ColumnInfo Id="IgnoreCase" Caption="Vakayı Yoksay" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleStringComparisonProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleSupportsCollectionAggregatesProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleSupportsCollectionAggregatesProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleSupportsCollectionAggregatesProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleUniqueValueProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleUniqueValueProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleUniqueValueProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="IRuleValueComparisonProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="IRuleValueComparisonProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="IRuleValueComparisonProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="ModelDifference_Aspects_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+        <ColumnInfo Id="DisplayName" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ModelDifference_DetailView">
+      <Items>
+        <PropertyEditor Id="UserName" Caption="Kullanıcı Adı" />
+      </Items>
+    </DetailView>
+    <ListView Id="ModelDifference_ListView">
+      <Columns>
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="ModelDifference_LookupListView">
+      <Columns>
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ModelDifferenceAspect_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="ModelDifferenceAspect_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Notification_DetailView">
+      <Items>
+        <PropertyEditor Id="Subject" Caption="Konu" />
+      </Items>
+    </DetailView>
+    <ListView Id="Notification_ListView">
+      <Columns>
+        <ColumnInfo Id="Subject" Caption="Konu" />
+      </Columns>
+    </ListView>
+    <ListView Id="Notification_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Subject" Caption="Konu" />
+      </Columns>
+    </ListView>
+    <ListView Id="NotificationsObject_Notifications_ListView">
+      <Columns>
+        <ColumnInfo Id="Subject" Caption="Konu" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ProceedMember_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="ProceedMember_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProceedMember_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="PurchaseInvoice_DetailView">
+      <Items>
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+        <PropertyEditor Id="Detail" Caption="Detay" />
+        <PropertyEditor Id="DiscountTotal" Caption="İndirim Toplam" />
+        <PropertyEditor Id="MovementType" Caption="Hareket Türü" />
+        <PropertyEditor Id="OverallTotal" Caption="Genel Toplam" />
+        <PropertyEditor Id="SubTotal" Caption="Alt Toplam" />
+        <PropertyEditor Id="TaxTotal" Caption="Vergi Toplam" />
+        <PropertyEditor Id="Type" Caption="Tür" />
+      </Items>
+    </DetailView>
+    <ListView Id="PurchaseInvoice_ListView" Caption="Alış Faturası">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="MovementType" Caption="Hareket Türü" />
+        <ColumnInfo Id="Type" Caption="Tür" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="SubTotal" Caption="Alt Toplam" />
+        <ColumnInfo Id="DiscountTotal" Caption="İndirim Toplam" />
+        <ColumnInfo Id="TaxTotal" Caption="Vergi Toplam" />
+        <ColumnInfo Id="OverallTotal" Caption="Genel Toplam" />
+      </Columns>
+    </ListView>
+    <ListView Id="PurchaseInvoice_LookupListView" Caption="Alış Faturası">
+      <Columns>
+        <ColumnInfo Id="Code" Caption="Kod" />
+      </Columns>
+    </ListView>
+    <ListView Id="Receipts_Detail_ListView" Caption="Stok Hareketleri">
+      <Columns>
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="StockType" Caption="Stok Türü" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="Amount" Caption="Adet" />
+        <ColumnInfo Id="UnitPrice" Caption="Birim Fiyat" />
+        <ColumnInfo Id="Total" Caption="Toplam" />
+        <ColumnInfo Id="DiscountRate" Caption="İndirim Oran" />
+        <ColumnInfo Id="DiscountAmount" Caption="İndirim Tutar" />
+        <ColumnInfo Id="NetTotal" Caption="Net Toplam" />
+        <ColumnInfo Id="TaxRate" Caption="Vergi Oran" />
+        <ColumnInfo Id="TaxAmount" Caption="Vergi Tutar" />
+        <ColumnInfo Id="OverallTotal" Caption="Genel Toplam" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Receipts_DetailView">
+      <Items>
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+        <PropertyEditor Id="DiscountTotal" Caption="İndirim Toplam" />
+        <PropertyEditor Id="OverallTotal" Caption="Genel Toplam" />
+        <PropertyEditor Id="SubTotal" Caption="Alt Toplam" />
+        <PropertyEditor Id="TaxTotal" Caption="Vergi Toplam" />
+      </Items>
+    </DetailView>
+    <ListView Id="Receipts_ListView">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="SubTotal" Caption="Alt Toplam" />
+        <ColumnInfo Id="DiscountTotal" Caption="İndirim Toplam" />
+        <ColumnInfo Id="TaxTotal" Caption="Vergi Toplam" />
+        <ColumnInfo Id="OverallTotal" Caption="Genel Toplam" />
+      </Columns>
+    </ListView>
+    <ListView Id="Receipts_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Code" Caption="Kod" />
+      </Columns>
+    </ListView>
+    <DetailView Id="ResetPasswordParameters_DetailView">
+      <Items>
+        <PropertyEditor Id="Password" Caption="Şifre" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ResetPasswordParameters" Caption="Şifre" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="ResetPasswordParameters_ListView">
+      <Columns>
+        <ColumnInfo Id="Password" Caption="Şifre" />
+      </Columns>
+    </ListView>
+    <ListView Id="ResetPasswordParameters_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Password" Caption="Şifre" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Resource_DetailView" Caption="Kaynak">
+      <Items>
+        <PropertyEditor Id="Color" Caption="Renk" />
+        <PropertyEditor Id="Events" Caption="Etkinlikler" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Resource" Caption="Kaynak" />
+          </LayoutGroup>
+          <LayoutGroup Id="Events_Group" Caption="Etkinlikler" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Resource_Events_ListView" Caption="Zamanlayıcı Etkinliği">
+      <Columns>
+        <ColumnInfo Id="AlarmTime" Caption="Alarm zamanı" />
+        <ColumnInfo Id="Description" Caption="Açıklama" />
+        <ColumnInfo Id="NotificationMessage" Caption="Bildirim Mesajı" />
+        <ColumnInfo Id="RecurrenceInfoXml" Caption="Tekrarlama" />
+        <ColumnInfo Id="ReminderTime" Caption="Hatırlatma Zamanı" />
+        <ColumnInfo Id="Subject" Caption="Konu" />
+        <ColumnInfo Id="StartOn" Caption="Başlangıç Tarihi / Saati" />
+        <ColumnInfo Id="EndOn" Caption="Bitiş Tarihi / Saati" />
+        <ColumnInfo Id="AllDay" Caption="Tüm Gün" />
+        <ColumnInfo Id="Location" Caption="Konum" />
+        <ColumnInfo Id="Label" Caption="Etiket" />
+        <ColumnInfo Id="Status" Caption="Durum" />
+        <ColumnInfo Id="RecurrencePattern" Caption="Tekrarlama paterni" />
+      </Columns>
+    </ListView>
+    <ListView Id="Resource_ListView" Caption="Kaynak">
+      <Columns>
+        <ColumnInfo Id="Color" Caption="Renk" />
+      </Columns>
+    </ListView>
+    <ListView Id="Resource_LookupListView" Caption="Kaynak" />
+    <DetailView Id="RuleBaseProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleBaseProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleBaseProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleCombinationOfPropertiesIsUniqueProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleCombinationOfPropertiesIsUniqueProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleCombinationOfPropertiesIsUniqueProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleCriteriaProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleCriteriaProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleCriteriaProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleFromBoolPropertyProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleFromBoolPropertyProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleFromBoolPropertyProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleIsReferencedProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleIsReferencedProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleIsReferencedProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleObjectExistsProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleObjectExistsProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleObjectExistsProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RulePropertyValueProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RulePropertyValueProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RulePropertyValueProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleRangeProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleRangeProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleRangeProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleRegularExpressionProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleRegularExpressionProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleRegularExpressionProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleRequiredFieldProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleRequiredFieldProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleRequiredFieldProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleSearchObjectProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleSearchObjectProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleSearchObjectProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleSetValidationResult_Results_ListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleSetValidationResultItem_ByTarget_ListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+        <ColumnInfo Id="ErrorMessage" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleSetValidationResultItem_DetailView">
+      <Items>
+        <PropertyEditor Id="RuleName" Caption="Rol Adı" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleSetValidationResultItem_ListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleSetValidationResultItemAggregate_AggregatedResults_ListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleSetValidationResultItemAggregate_DetailView">
+      <Items>
+        <PropertyEditor Id="RuleName" Caption="Rol Adı" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleSetValidationResultItemAggregate_ListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleSetValidationResultItemAggregate_LookupListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleStringComparisonProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="IgnoreCase" Caption="Vakayı Yoksay" />
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleStringComparisonProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+        <ColumnInfo Id="IgnoreCase" Caption="Vakayı Yoksay" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleStringComparisonProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleUniqueValueProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleUniqueValueProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleUniqueValueProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="RuleValueComparisonProperties_DetailView">
+      <Items>
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="RuleValueComparisonProperties_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="RuleValueComparisonProperties_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SaleInvoice_DetailView" Caption="Satış Faturası">
+      <Items>
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+        <PropertyEditor Id="Detail" Caption="Detay" />
+        <PropertyEditor Id="DiscountTotal" Caption="İndirim Toplam" />
+        <PropertyEditor Id="MovementType" Caption="Hareket Türü" />
+        <PropertyEditor Id="OverallTotal" Caption="Genel Toplam" />
+        <PropertyEditor Id="SubTotal" Caption="Alt Toplam" />
+        <PropertyEditor Id="TaxTotal" Caption="Vergi Toplam" />
+        <PropertyEditor Id="Type" Caption="Tür" />
+      </Items>
+    </DetailView>
+    <ListView Id="SaleInvoice_ListView" Caption="Satış Faturası">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="MovementType" Caption="Hareket Türü" />
+        <ColumnInfo Id="Type" Caption="Tür" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="SubTotal" Caption="Alt Toplam" />
+        <ColumnInfo Id="DiscountTotal" Caption="İndirim Toplam" />
+        <ColumnInfo Id="TaxTotal" Caption="Vergi Toplam" />
+        <ColumnInfo Id="OverallTotal" Caption="Genel Toplam" />
+      </Columns>
+    </ListView>
+    <ListView Id="SaleInvoice_LookupListView" Caption="Satış Faturası">
+      <Columns>
+        <ColumnInfo Id="Code" Caption="Kod" />
+      </Columns>
+    </ListView>
+    <ListView Id="SecurityDiagnosticInfoObject_MembersDataSource_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Stock_DetailView" Caption="Stok">
+      <Items>
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+        <PropertyEditor Id="Entering" Caption="Giren" />
+        <PropertyEditor Id="Out" Caption="Çıkan" />
+        <PropertyEditor Id="PurchasePrice" Caption="Alış Fiyatı" />
+        <PropertyEditor Id="Remaining" Caption="Kalan" />
+        <PropertyEditor Id="SalePrice" Caption="Satış Ücreti" />
+        <PropertyEditor Id="Status" Caption="Durum" />
+        <PropertyEditor Id="StockMovements" Caption="Stok Hareketleri" />
+        <PropertyEditor Id="Tax" Caption="Vergi" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Stock" Caption="Stok" />
+          </LayoutGroup>
+          <LayoutGroup Id="StockMovements_Group" Caption="Stok Hareketleri" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Stock_ListView" Caption="Stok">
+      <Columns>
+        <ColumnInfo Id="PurchasePrice" Caption="Alış Fiyatı" />
+        <ColumnInfo Id="SalePrice" Caption="Satış Ücreti" />
+        <ColumnInfo Id="Tax" Caption="Vergi" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Status" Caption="Durum" />
+        <ColumnInfo Id="Entering" Caption="Giren" />
+        <ColumnInfo Id="Out" Caption="Çıkan" />
+        <ColumnInfo Id="Remaining" Caption="Kalan" />
+      </Columns>
+      <Filters>
+        <Filter Id="All" Description="Hepsi" Caption="Hepsi" />
+        <Filter Id="active" Caption="Aktif" Description="Aktif" />
+        <Filter Id="Passive" Description="Pasif" Caption="Pasif" />
+      </Filters>
+    </ListView>
+    <ListView Id="Stock_LookupListView" Caption="Stok">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="Stock_StockMovements_ListView" Caption="Stok Hareketleri">
+      <Columns>
+        <ColumnInfo Id="DiscountAmount" Caption="İndirim Tutar" />
+        <ColumnInfo Id="DiscountRate" Caption="İndirim Oran" />
+        <ColumnInfo Id="NetTotal" Caption="Net Toplam" />
+        <ColumnInfo Id="TaxAmount" Caption="Vergi Tutar" />
+        <ColumnInfo Id="TaxRate" Caption="Vergi Oran" />
+        <ColumnInfo Id="Total" Caption="Toplam" />
+        <ColumnInfo Id="UnitPrice" Caption="Birim Fiyat" />
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="StockType" Caption="Stok Türü" />
+        <ColumnInfo Id="Amount" Caption="Adet" />
+        <ColumnInfo Id="OverallTotal" Caption="Genel Toplam" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <DetailView Id="StockMovements_DetailView" Caption="Stok Hareketleri">
+      <Items>
+        <PropertyEditor Id="Amount" Caption="Adet" />
+        <PropertyEditor Id="Date" Caption="Tarih" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+        <PropertyEditor Id="DiscountAmount" Caption="İndirim Tutar" />
+        <PropertyEditor Id="DiscountRate" Caption="İndirim Oran" />
+        <PropertyEditor Id="NetTotal" Caption="Net Toplam" />
+        <PropertyEditor Id="OverallTotal" Caption="Genel Toplam" />
+        <PropertyEditor Id="StockType" Caption="Stok Türü" />
+        <PropertyEditor Id="TaxAmount" Caption="Vergi Tutar" />
+        <PropertyEditor Id="TaxRate" Caption="Vergi Oran" />
+        <PropertyEditor Id="Total" Caption="Toplam" />
+        <PropertyEditor Id="UnitPrice" Caption="Birim Fiyat" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="StockMovements" Caption="Stok Hareketleri" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="StockMovements_ListView" Caption="Stok Hareketleri">
+      <Columns>
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="StockType" Caption="Stok Türü" />
+        <ColumnInfo Id="Amount" Caption="Adet" />
+        <ColumnInfo Id="UnitPrice" Caption="Birim Fiyat" />
+        <ColumnInfo Id="Total" Caption="Toplam" />
+        <ColumnInfo Id="DiscountRate" Caption="İndirim Oran" />
+        <ColumnInfo Id="DiscountAmount" Caption="İndirim Tutar" />
+        <ColumnInfo Id="NetTotal" Caption="Net Toplam" />
+        <ColumnInfo Id="TaxRate" Caption="Vergi Oran" />
+        <ColumnInfo Id="TaxAmount" Caption="Vergi Tutar" />
+        <ColumnInfo Id="OverallTotal" Caption="Genel Toplam" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="StockMovements_LookupListView" Caption="Stok Hareketleri">
+      <Columns>
+        <ColumnInfo Id="Date" Caption="Tarih" />
+        <ColumnInfo Id="StockType" Caption="Stok Türü" />
+        <ColumnInfo Id="Amount" Caption="Adet" />
+        <ColumnInfo Id="UnitPrice" Caption="Birim Fiyat" />
+        <ColumnInfo Id="Total" Caption="Toplam" />
+        <ColumnInfo Id="DiscountRate" Caption="İndirim Oran" />
+        <ColumnInfo Id="DiscountAmount" Caption="İndirim Tutar" />
+        <ColumnInfo Id="NetTotal" Caption="Net Toplam" />
+        <ColumnInfo Id="TaxRate" Caption="Vergi Oran" />
+        <ColumnInfo Id="TaxAmount" Caption="Vergi Tutar" />
+        <ColumnInfo Id="OverallTotal" Caption="Genel Toplam" />
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Unit_DetailView" Caption="Birim">
+      <Items>
+        <PropertyEditor Id="Code" Caption="Kod" />
+        <PropertyEditor Id="Default" Caption="Varsayılan" />
+        <PropertyEditor Id="Definition" Caption="Açıklama" />
+        <PropertyEditor Id="Status" Caption="Durum" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Unit" Caption="Birim" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Unit_ListView" Caption="Birim">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+        <ColumnInfo Id="Code" Caption="Kod" />
+        <ColumnInfo Id="Status" Caption="Durum" />
+        <ColumnInfo Id="Default" Caption="Varsayılan" />
+      </Columns>
+      <Filters>
+        <Filter Id="All" Description="Hepsi" Caption="Hepsi" />
+        <Filter Id="active" Caption="Aktif" Description="Aktif" />
+        <Filter Id="Passive" Description="Pasif" Caption="Pasif" />
+      </Filters>
+    </ListView>
+    <ListView Id="Unit_LookupListView" Caption="Birim">
+      <Columns>
+        <ColumnInfo Id="Definition" Caption="Açıklama" />
+      </Columns>
+    </ListView>
+    <ListView Id="ValidationResults_DisplayableValidationResultItems_ListView">
+      <Columns>
+        <ColumnInfo Id="RuleName" Caption="Rol Adı" />
+        <ColumnInfo Id="RuleProperties.Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

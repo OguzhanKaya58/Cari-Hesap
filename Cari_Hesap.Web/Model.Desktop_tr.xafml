@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="Edit" ToolTip="Düzenle" ShortCaption="Düzenle" Caption="Düzenle" />
+      <Action Id="Export" ToolTip="Dışa Aktar" ShortCaption="Dışa Aktar" Caption="Dışa Aktar" />
+      <Action Id="FullTextSearch" NullValuePrompt="Ara..." ToolTip="x" />
+      <Action Id="SwitchToEditMode" ToolTip="Düzenle" ShortCaption="Düzenle" Caption="Düzenle" />
+    </Actions>
+    <ActionToContainerMapping>
+      <ActionContainer Id="Edit" Caption="Düzenle" />
+    </ActionToContainerMapping>
+    <DisableReasons>
+      <Reason Id="ByContext_RequireMultipleObjects" Caption="En az bir nesne seçilmesini gerektirir" />
+      <Reason Id="ByContext_RequireSingleObject" Caption="Tek bir nesnenin seçilmesini gerektirir" />
+    </DisableReasons>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="DevExpress.ExpressApp.SystemModule.StaticImageDashboardOrganizationItem">
+      <OwnMembers>
+        <Member Name="ImageName" Caption="Resim Adı" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.Event" Caption="Zamanlayıcı Etkinliği" />
+    <Class Name="DevExpress.Persistent.BaseImpl.FileData">
+      <OwnMembers>
+        <Member Name="FileName" Caption="Dosya Adı" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyActionPermissionObject">
+      <OwnMembers>
+        <Member Name="Role" Caption="Rol" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyNavigationPermissionObject">
+      <OwnMembers>
+        <Member Name="Role" Caption="Rol" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRole" Caption="Rol">
+      <OwnMembers>
+        <Member Name="Users" Caption="Kullanıcılar" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRoleBase">
+      <OwnMembers>
+        <Member Name="CanEditModel" Caption="Modeli Düzenleyebilir" />
+        <Member Name="IsAdministrative" Caption="Admin mi" />
+        <Member Name="Name" Caption="Ad" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyTypePermissionObject">
+      <OwnMembers>
+        <Member Name="Role" Caption="Rol" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser" Caption="Kullanıcı">
+      <OwnMembers>
+        <Member Name="ChangePasswordOnFirstLogon" Caption="Şifre Değişikliğine Zorla" />
+        <Member Name="IsActive" Caption="Aktif" />
+        <Member Name="Roles" Caption="Roller" />
+        <Member Name="UserName" Caption="Kullanıcı Adı" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="ASPxImagePropertyEditor">
+      <LocalizationItem Name="Edit" Value="Düzenle" />
+    </LocalizationGroup>
+    <LocalizationGroup Name="Captions">
+      <LocalizationItem Name="MyAccount" Value="Hesabım" />
+    </LocalizationGroup>
+    <LocalizationGroup Name="DialogButtons">
+      <LocalizationItem Name="Edit" Value="Düzenle" />
+    </LocalizationGroup>
+  </Localization>
+  <NavigationItems>
+    <Items>
+      <Item Id="Özellikler">
+        <Items>
+          <Item Id="MyDetails" Caption="Hesabım" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Views>
+    <DetailView Id="AuthenticationStandardLogonParameters_DetailView">
+      <Items>
+        <StaticText Id="LogonText" Text="Hoş Geldiniz! Lütfen Kullanıcı Adınızı Ve Şifrenizi Giriniz." />
+      </Items>
+    </DetailView>
+    <DetailView Id="Event_DetailView" Caption="Zamanlayıcı Etkinliği" />
+    <ListView Id="Event_ListView" Caption="Zamanlayıcı Etkinliği" />
+    <ListView Id="Event_LookupListView" Caption="Zamanlayıcı Etkinliği" />
+    <DetailView Id="FileData_DetailView">
+      <Items>
+        <PropertyEditor Id="FileName" Caption="Dosya Adı" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors" Caption="Dosya Adı" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="FileData_ListView">
+      <Columns>
+        <ColumnInfo Id="FileName" Caption="Dosya Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="FileData_LookupListView">
+      <Columns>
+        <ColumnInfo Id="FileName" Caption="Dosya Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyActionPermissionObject_ListView">
+      <Columns>
+        <ColumnInfo Id="Role" Caption="Rol" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyActionPermissionObject_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Role" Caption="Rol" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyNavigationPermissionObject_ListView">
+      <Columns>
+        <ColumnInfo Id="Role" Caption="Rol" />
+      </Columns>
+    </ListView>
+    <DetailView Id="PermissionPolicyRole_DetailView" Caption="Rol">
+      <Items>
+        <PropertyEditor Id="CanEditModel" Caption="Modeli Düzenleyebilir" />
+        <PropertyEditor Id="IsAdministrative" Caption="Admin mi" />
+        <PropertyEditor Id="Name" Caption="Ad" />
+        <PropertyEditor Id="Users" Caption="Kullanıcılar" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <TabbedGroup Id="Tabs1">
+            <LayoutGroup Id="Users" Caption="Kullanıcılar" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="PermissionPolicyRole_ListView" Caption="Rol">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+        <ColumnInfo Id="IsAdministrative" Caption="Admin mi" />
+        <ColumnInfo Id="CanEditModel" Caption="Modeli Düzenleyebilir" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyRole_LookupListView" Caption="Rol">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyRole_Users_ListView" Caption="Kullanıcı">
+      <Columns>
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+        <ColumnInfo Id="ChangePasswordOnFirstLogon" Caption="Şifre Değişikliğine Zorla" />
+        <ColumnInfo Id="IsActive" Caption="Aktif" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyRoleBase_ActionPermissions_ListView">
+      <Columns>
+        <ColumnInfo Id="Role" Caption="Rol" />
+      </Columns>
+    </ListView>
+    <DetailView Id="PermissionPolicyRoleBase_DetailView">
+      <Items>
+        <PropertyEditor Id="CanEditModel" Caption="Modeli Düzenleyebilir" />
+        <PropertyEditor Id="IsAdministrative" Caption="Admin mi" />
+        <PropertyEditor Id="Name" Caption="Ad" />
+      </Items>
+    </DetailView>
+    <ListView Id="PermissionPolicyRoleBase_ListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+        <ColumnInfo Id="IsAdministrative" Caption="Admin mi" />
+        <ColumnInfo Id="CanEditModel" Caption="Modeli Düzenleyebilir" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyRoleBase_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyRoleBase_NavigationPermissions_ListView">
+      <Columns>
+        <ColumnInfo Id="Role" Caption="Rol" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyRoleBase_TypePermissions_ListView">
+      <Columns>
+        <ColumnInfo Id="Role" Caption="Rol" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyTypePermissionObject_ListView">
+      <Columns>
+        <ColumnInfo Id="Role" Caption="Rol" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyTypePermissionObject_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Role" Caption="Rol" />
+      </Columns>
+    </ListView>
+    <DetailView Id="PermissionPolicyUser_DetailView" Caption="Kullanıcı">
+      <Items>
+        <PropertyEditor Id="ChangePasswordOnFirstLogon" Caption="Şifre Değişikliğine Zorla" />
+        <PropertyEditor Id="IsActive" Caption="Aktif" />
+        <PropertyEditor Id="Roles" Caption="Roller" />
+        <PropertyEditor Id="UserName" Caption="Kullanıcı Adı" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="Roles_Group" Caption="Roller" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="PermissionPolicyUser_ListView" Caption="Kullanıcı">
+      <Columns>
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+        <ColumnInfo Id="ChangePasswordOnFirstLogon" Caption="Şifre Değişikliğine Zorla" />
+        <ColumnInfo Id="IsActive" Caption="Aktif" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyUser_LookupListView" Caption="Kullanıcı">
+      <Columns>
+        <ColumnInfo Id="UserName" Caption="Kullanıcı Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="PermissionPolicyUser_Roles_ListView" Caption="Rol">
+      <Columns>
+        <ColumnInfo Id="Name" Caption="Ad" />
+        <ColumnInfo Id="IsAdministrative" Caption="Admin mi" />
+        <ColumnInfo Id="CanEditModel" Caption="Modeli Düzenleyebilir" />
+      </Columns>
+    </ListView>
+    <ListView Id="Resource_Events_ListView" Caption="Zamanlayıcı Etkinliği" />
+    <DetailView Id="StaticImageDashboardOrganizationItem_DetailView">
+      <Items>
+        <PropertyEditor Id="ImageName" Caption="Resim Adı" />
+      </Items>
+    </DetailView>
+    <ListView Id="StaticImageDashboardOrganizationItem_ListView">
+      <Columns>
+        <ColumnInfo Id="ImageName" Caption="Resim Adı" />
+      </Columns>
+    </ListView>
+    <ListView Id="StaticImageDashboardOrganizationItem_LookupListView">
+      <Columns>
+        <ColumnInfo Id="ImageName" Caption="Resim Adı" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>
